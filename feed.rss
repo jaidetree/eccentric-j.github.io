@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='https://eccentric-j.com/' rel='self' type='application/rss+xml'/>
+<title>
+Eccentric J
+</title>
+<description>
+Eccentric J's Blog
+</description>
+<link>
+https://eccentric-j.com/
+</link>
+<generator>
+clj-rss
+</generator>
+<item>
+<link>
+https://eccentric-j.com/projects/project1.html
+</link>
+<guid>
+https://eccentric-j.com/projects/project1.html
+</guid>
+<pubDate>
+Tue, 15 Jan 2019 19:00:00 -0500
+</pubDate>
+<title>
+Test project
+</title>
+<description>
+Test Project
+</description>
+<author>
+jayzawrotny@gmail.com
+</author>
+</item>
+<item>
+<link>
+https://eccentric-j.com/blog/post2.html
+</link>
+<guid>
+https://eccentric-j.com/blog/post2.html
+</guid>
+<pubDate>
+Sat, 10 May 2014 20:00:00 -0400
+</pubDate>
+<title>
+Fulvaque viderat in eburnae femina
+</title>
+<description>
+Lorem markdownum et tum tanto nuribusque damnavit, pulsat pinna. Exclamant
+</description>
+<author>
+podviaznikov@gmail.com
+</author>
+</item>
+<item>
+<link>
+https://eccentric-j.com/blog/post1.html
+</link>
+<guid>
+https://eccentric-j.com/blog/post1.html
+</guid>
+<pubDate>
+Thu, 26 Dec 2013 19:00:00 -0500
+</pubDate>
+<title>
+Celebrare gutture usus nebulas quisquam scitantibus intrepidum
+</title>
+<description>
+Lorem markdownum virgo non simplex atque, bis placavit, est frondentis aera.
+</description>
+<author>
+anton@hashobject.com
+</author>
+</item>
+</channel>
+</rss>
