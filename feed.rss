@@ -6,7 +6,7 @@
 Eccentric J
 </title>
 <description>
-Eccentric J's Blog
+Eccentric J's blog on Functional Programming, Clojure, and Engineering
 </description>
 <link>
 https://eccentric-j.com/
@@ -16,22 +16,42 @@ clj-rss
 </generator>
 <item>
 <link>
-https://eccentric-j.com/blog/post3.html
+https://eccentric-j.com/blog/3-functional-programming-experience.html
 </link>
 <guid>
-https://eccentric-j.com/blog/post3.html
+https://eccentric-j.com/blog/3-functional-programming-experience.html
 </guid>
 <pubDate>
-Mon, 30 Dec 2013 13:20:33 -0500
+Mon, 28 Jan 2019 19:31:00 -0500
 </pubDate>
 <title>
-Celebrare gutture usus nebulas quisquam scitantibus intrepidum
+My Functional Programming Experience
 </title>
 <description>
-Lorem markdownum virgo non simplex atque, bis placavit, est frondentis aera.
+My journey climbing the functional programming mountain.
 </description>
 <author>
-anton@hashobject.com
+jayzawrotny@gmail.com
+</author>
+</item>
+<item>
+<link>
+https://eccentric-j.com/blog/1-site-launch.html
+</link>
+<guid>
+https://eccentric-j.com/blog/1-site-launch.html
+</guid>
+<pubDate>
+Fri, 25 Jan 2019 18:00:00 -0500
+</pubDate>
+<title>
+Site Launch :tada:
+</title>
+<description>
+A brief introduction to this blog, development process, and goals.
+</description>
+<author>
+jayzawrotny@gmail.com
 </author>
 </item>
 </channel>
