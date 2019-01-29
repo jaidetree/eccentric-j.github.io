@@ -4,14 +4,14 @@ goog.require('cljs.core');
 goog.require('cljs.core.constants');
 app.util.log = (function app$util$log(var_args){
 var args__4647__auto__ = [];
-var len__4641__auto___6731 = arguments.length;
-var i__4642__auto___6732 = (0);
+var len__4641__auto___6733 = arguments.length;
+var i__4642__auto___6734 = (0);
 while(true){
-if((i__4642__auto___6732 < len__4641__auto___6731)){
-args__4647__auto__.push((arguments[i__4642__auto___6732]));
+if((i__4642__auto___6734 < len__4641__auto___6733)){
+args__4647__auto__.push((arguments[i__4642__auto___6734]));
 
-var G__6733 = (i__4642__auto___6732 + (1));
-i__4642__auto___6732 = G__6733;
+var G__6735 = (i__4642__auto___6734 + (1));
+i__4642__auto___6734 = G__6735;
 continue;
 } else {
 }
@@ -29,9 +29,9 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.println,args);
 app.util.log.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-app.util.log.cljs$lang$applyTo = (function (seq6730){
+app.util.log.cljs$lang$applyTo = (function (seq6732){
 var self__4629__auto__ = this;
-return self__4629__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq6730));
+return self__4629__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq6732));
 });
 
 app.util.query_all = (function app$util$query_all(selector){
