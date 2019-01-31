@@ -42,61 +42,61 @@ return classes;
 }
 });
 app.ui.scroll.apply_scroll_updates = (function app$ui$scroll$apply_scroll_updates(scroll_updates){
-var seq__6762 = cljs.core.seq(scroll_updates);
-var chunk__6763 = null;
-var count__6764 = (0);
-var i__6765 = (0);
+var seq__6764 = cljs.core.seq(scroll_updates);
+var chunk__6765 = null;
+var count__6766 = (0);
+var i__6767 = (0);
 while(true){
-if((i__6765 < count__6764)){
-var map__6766 = chunk__6763.cljs$core$IIndexed$_nth$arity$2(null,i__6765);
-var map__6766__$1 = (((((!((map__6766 == null))))?(((((map__6766.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__6766.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__6766):map__6766);
-var el = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__6766__$1,cljs.core.cst$kw$el);
-var visible_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__6766__$1,cljs.core.cst$kw$visible_QMARK_);
-var classes_6770 = app.ui.scroll.update_classes(visible_QMARK_,app.ui.scroll.split_classes(el));
-el.className = clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",classes_6770);
-
-
-var G__6771 = seq__6762;
-var G__6772 = chunk__6763;
-var G__6773 = count__6764;
-var G__6774 = (i__6765 + (1));
-seq__6762 = G__6771;
-chunk__6763 = G__6772;
-count__6764 = G__6773;
-i__6765 = G__6774;
-continue;
-} else {
-var temp__5720__auto__ = cljs.core.seq(seq__6762);
-if(temp__5720__auto__){
-var seq__6762__$1 = temp__5720__auto__;
-if(cljs.core.chunked_seq_QMARK_(seq__6762__$1)){
-var c__4461__auto__ = cljs.core.chunk_first(seq__6762__$1);
-var G__6775 = cljs.core.chunk_rest(seq__6762__$1);
-var G__6776 = c__4461__auto__;
-var G__6777 = cljs.core.count(c__4461__auto__);
-var G__6778 = (0);
-seq__6762 = G__6775;
-chunk__6763 = G__6776;
-count__6764 = G__6777;
-i__6765 = G__6778;
-continue;
-} else {
-var map__6768 = cljs.core.first(seq__6762__$1);
+if((i__6767 < count__6766)){
+var map__6768 = chunk__6765.cljs$core$IIndexed$_nth$arity$2(null,i__6767);
 var map__6768__$1 = (((((!((map__6768 == null))))?(((((map__6768.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__6768.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__6768):map__6768);
 var el = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__6768__$1,cljs.core.cst$kw$el);
 var visible_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__6768__$1,cljs.core.cst$kw$visible_QMARK_);
-var classes_6779 = app.ui.scroll.update_classes(visible_QMARK_,app.ui.scroll.split_classes(el));
-el.className = clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",classes_6779);
+var classes_6772 = app.ui.scroll.update_classes(visible_QMARK_,app.ui.scroll.split_classes(el));
+el.className = clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",classes_6772);
 
 
-var G__6780 = cljs.core.next(seq__6762__$1);
-var G__6781 = null;
-var G__6782 = (0);
-var G__6783 = (0);
-seq__6762 = G__6780;
-chunk__6763 = G__6781;
-count__6764 = G__6782;
-i__6765 = G__6783;
+var G__6773 = seq__6764;
+var G__6774 = chunk__6765;
+var G__6775 = count__6766;
+var G__6776 = (i__6767 + (1));
+seq__6764 = G__6773;
+chunk__6765 = G__6774;
+count__6766 = G__6775;
+i__6767 = G__6776;
+continue;
+} else {
+var temp__5720__auto__ = cljs.core.seq(seq__6764);
+if(temp__5720__auto__){
+var seq__6764__$1 = temp__5720__auto__;
+if(cljs.core.chunked_seq_QMARK_(seq__6764__$1)){
+var c__4461__auto__ = cljs.core.chunk_first(seq__6764__$1);
+var G__6777 = cljs.core.chunk_rest(seq__6764__$1);
+var G__6778 = c__4461__auto__;
+var G__6779 = cljs.core.count(c__4461__auto__);
+var G__6780 = (0);
+seq__6764 = G__6777;
+chunk__6765 = G__6778;
+count__6766 = G__6779;
+i__6767 = G__6780;
+continue;
+} else {
+var map__6770 = cljs.core.first(seq__6764__$1);
+var map__6770__$1 = (((((!((map__6770 == null))))?(((((map__6770.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__6770.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__6770):map__6770);
+var el = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__6770__$1,cljs.core.cst$kw$el);
+var visible_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__6770__$1,cljs.core.cst$kw$visible_QMARK_);
+var classes_6781 = app.ui.scroll.update_classes(visible_QMARK_,app.ui.scroll.split_classes(el));
+el.className = clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",classes_6781);
+
+
+var G__6782 = cljs.core.next(seq__6764__$1);
+var G__6783 = null;
+var G__6784 = (0);
+var G__6785 = (0);
+seq__6764 = G__6782;
+chunk__6765 = G__6783;
+count__6766 = G__6784;
+i__6767 = G__6785;
 continue;
 }
 } else {
@@ -113,14 +113,14 @@ break;
  */
 app.ui.scroll.update_scroll_elements_BANG_ = (function app$ui$scroll$update_scroll_elements_BANG_(var_args){
 var args__4647__auto__ = [];
-var len__4641__auto___6786 = arguments.length;
-var i__4642__auto___6787 = (0);
+var len__4641__auto___6788 = arguments.length;
+var i__4642__auto___6789 = (0);
 while(true){
-if((i__4642__auto___6787 < len__4641__auto___6786)){
-args__4647__auto__.push((arguments[i__4642__auto___6787]));
+if((i__4642__auto___6789 < len__4641__auto___6788)){
+args__4647__auto__.push((arguments[i__4642__auto___6789]));
 
-var G__6788 = (i__4642__auto___6787 + (1));
-i__4642__auto___6787 = G__6788;
+var G__6790 = (i__4642__auto___6789 + (1));
+i__4642__auto___6789 = G__6790;
 continue;
 } else {
 }
@@ -134,8 +134,8 @@ return app.ui.scroll.update_scroll_elements_BANG_.cljs$core$IFn$_invoke$arity$va
 app.ui.scroll.update_scroll_elements_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (_){
 var frame = app.ui.scroll.window__GT_rect(window);
 return app.ui.scroll.apply_scroll_updates(cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (frame){
-return (function (p1__6784_SHARP_){
-return app.ui.scroll.create_update(frame,p1__6784_SHARP_);
+return (function (p1__6786_SHARP_){
+return app.ui.scroll.create_update(frame,p1__6786_SHARP_);
 });})(frame))
 ,app.ui.scroll.scrollable_elements()));
 });
@@ -143,8 +143,8 @@ return app.ui.scroll.create_update(frame,p1__6784_SHARP_);
 app.ui.scroll.update_scroll_elements_BANG_.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-app.ui.scroll.update_scroll_elements_BANG_.cljs$lang$applyTo = (function (seq6785){
+app.ui.scroll.update_scroll_elements_BANG_.cljs$lang$applyTo = (function (seq6787){
 var self__4629__auto__ = this;
-return self__4629__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq6785));
+return self__4629__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq6787));
 });
 
