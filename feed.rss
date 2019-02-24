@@ -16,6 +16,26 @@ clj-rss
 </generator>
 <item>
 <link>
+https://eccentric-j.com/blog/5-announcing-cljs-tui-template.html
+</link>
+<guid>
+https://eccentric-j.com/blog/5-announcing-cljs-tui-template.html
+</guid>
+<pubDate>
+Sun, 24 Feb 2019 23:30:00 +0000
+</pubDate>
+<title>
+Announcing my Leiningen ClojureScript Terminal-User-Interface Application Template :tada:
+</title>
+<description>
+Create ClojureScript TUI applications using web technologies you already know
+</description>
+<author>
+jayzawrotny@gmail.com
+</author>
+</item>
+<item>
+<link>
 https://eccentric-j.com/blog/4-completing-side-projects-in-2019.html
 </link>
 <guid>
