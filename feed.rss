@@ -16,6 +16,26 @@ clj-rss
 </generator>
 <item>
 <link>
+https://eccentric-j.com/blog/contributing-to-open-source.html
+</link>
+<guid>
+https://eccentric-j.com/blog/contributing-to-open-source.html
+</guid>
+<pubDate>
+Fri, 14 Jun 2019 02:13:00 +0000
+</pubDate>
+<title>
+My gentle introduction to hard-core open-source contribution
+</title>
+<description>
+I had made my first major open-source contribution to a popular Clojure library. Learn from my experience and start contributing!
+</description>
+<author>
+jayzawrotny@gmail.com
+</author>
+</item>
+<item>
+<link>
 https://eccentric-j.com/blog/5-announcing-cljs-tui-template.html
 </link>
 <guid>
