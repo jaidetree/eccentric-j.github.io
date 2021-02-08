@@ -1,4 +1,459 @@
-<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>Eccentric J</title><subtitle>Eccentric J's blog on Functional Programming, Clojure, and Engineering</subtitle><generator uri="https://perun.io/" version="0.4.2-SNAPSHOT">Perun</generator><link href="https://eccentric-j.com/" type="text/html"></link><link href="https://eccentric-j.com/atom.xml" rel="self"></link><link href="https://eccentric-j.com/atom.xml" rel="first"></link><link href="https://eccentric-j.com/atom.xml" rel="last"></link><updated>2020-10-22T21:26:26Z</updated><id>https://eccentric-j.com/</id><entry><id>urn:uuid:865C58D3-F5B4-4681-8762-87BB86F86E91</id><title>Our biggest obstacles are in our own minds</title><link href="https://eccentric-j.com/blog/biggest-obstacles.html" type="text/html" title="Our biggest obstacles are in our own minds" rel="alternate"></link><published>2020-06-29T02:29:00Z</published><updated>2020-06-29T02:29:00Z</updated><content type="html" xml:base="https://eccentric-j.com/blog/biggest-obstacles.html">&lt;p&gt;You might be thinking, “No it’s not! It’s completing my not-yet-open-sourced AutomaticCrudAbstractionLayer UI to communicate with my upcoming patent for my FormAbstractionOnTopOfAFormLayer wrapper to dispatch EventNodes to my reducer service to deterministically update my store state. Then I’m going to produce a framework with it to build a platform and sell it a software-as-a-service product!” Perhaps in a way, that is an obstacle, but then let’s ask, “What gets in the way of me accomplishing that?” Some more more practical reasons may come up, but eventually we may realize a lot of those stem from what’s in the minds. Distractions, fears, wants, needs, anger, and especially more complex problems like indecisiveness and anxiety constantly get in the way of a person achieving their goals. One may not even notice how much such obstacles can get in their way on a nearly constant basis.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>Eccentric J</title><subtitle>Eccentric J's blog on Functional Programming, Clojure, and Engineering</subtitle><generator uri="https://perun.io/" version="0.4.2-SNAPSHOT">Perun</generator><link href="https://eccentric-j.com/" type="text/html"></link><link href="https://eccentric-j.com/atom.xml" rel="self"></link><link href="https://eccentric-j.com/atom.xml" rel="first"></link><link href="https://eccentric-j.com/atom.xml" rel="last"></link><updated>2021-02-08T09:46:23Z</updated><id>https://eccentric-j.com/</id><entry><id>urn:uuid:E6C63B20-E6DF-48B0-83A6-3506AB12A118</id><title>Clojure like it's PHP: Use Clojure on Shared Web Hosts</title><link href="https://eccentric-j.com/blog/clojure-like-its-php.html" type="text/html" title="Clojure like it's PHP: Use Clojure on Shared Web Hosts" rel="alternate"></link><published>2021-02-10T00:00:00Z</published><updated>2021-02-10T00:00:00Z</updated><content type="html" xml:base="https://eccentric-j.com/blog/clojure-like-its-php.html">&lt;p&gt;A few days back in the Doom Emacs Discord, I daydreamed about a Clojure implementation that compiles to PHP. I felt nostalgic for the days of writing code and uploading it to the server well before containerization, continuous integration, and complex build scripts became the norm. Clojure, much like working with Ruby or Python, are slightly different beasts that require more powerful hosting capabilities and runtimes to support web apps. Deploying and running those web servers cost more time, money, and often both. Thankfully, Taco and Rushsteve responded and pointed out that Clojure could serve requests as a cgi-bin script running through Babashka. Sounding almost too good to be true, I had to give this a shot!&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#its-alive" id="its-alive"&gt;&lt;/a&gt;It&amp;rsquo;s Alive!&lt;/h2&gt;
+&lt;p&gt;After a bit of trial and error plus some help from Didibus in the Clojurians&amp;rsquo; Slack, I got a cgi-script running a Clojure file through Babashka! A few refinements and a sample db later: &lt;a href="https://cgi.eccentric-j.com/metal.clj"&gt;https://cgi.eccentric-j.com/metal.clj&lt;/a&gt;. This article breaks down the process to share what I learned and answer some predicted questions you may have.&lt;/p&gt;
+&lt;blockquote class="disclaimer"&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: The credit for this idea goes to Taco (&lt;a href="https://elais.codes/"&gt;Elais Player&lt;/a&gt;) and &lt;a href="https://rushsteve1.us"&gt;rushsteve1&lt;/a&gt; from the Doom Emacs Discord. Also big thanks to Borkdude (&lt;a href="https://michielborkent.nl"&gt;Michiel Borkent&lt;/a&gt;) for creating &lt;a href="https://github.com/babashka/babashka"&gt;Babashka&lt;/a&gt; and providing support. Also thanks to &lt;a href="https://www.rubberducking.com/"&gt;Didibus&lt;/a&gt; of the Clojurians&amp;rsquo; Slack for helping me figure out how to run my first test Clojure cgi script.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;&lt;a href="#in-a-nutshell" id="in-a-nutshell"&gt;&lt;/a&gt;In a Nutshell&lt;/h2&gt;
+&lt;p&gt;In general the setup is as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;User visits example.com/cgi-bin/demo.clj&lt;/li&gt;
+&lt;li&gt;The webserver (typically Apache) runs the demo.clj file&lt;/li&gt;
+&lt;li&gt;demo.clj runs through the Babashka binary&lt;/li&gt;
+&lt;li&gt;Headers and HTML printed to stdout form the response to the browser&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="/img/blog/7-clj-cgi-flow.jpg" alt="Flow Diagram of Using Clojure with Babashka for CGI-bin script requests on a shared web server" /&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#why-not-just-use-php-on-shared-servers" id="why-not-just-use-php-on-shared-servers"&gt;&lt;/a&gt;Why not just use PHP on shared servers?&lt;/h2&gt;
+&lt;p&gt;I would love to come at this with a perfectly logical and objective reason why Clojure is ultimately a better choice on shared hosts via CGI-script, but I can&amp;rsquo;t. What I can tell you is that I enjoy working with Clojure a lot more than PHP currently. I also feel Clojure third-party code is pretty consistent in style and design where as PHP has almost unlimited paradigms and styles to choose from resulting in wildly contrasting code. Another bonus is that as of &lt;a href="https://github.com/babashka/babashka/blob/master/CHANGELOG.md#v028"&gt;Babashka 0.2.8&lt;/a&gt;, which came out the day I gave this a shot, it now includes hiccup which makes crafting HTML feel like a velvety butter dream wrapped in brackets.&lt;/p&gt;
+&lt;p&gt;That said, this is still pretty experimental so it may take some more learning before this becomes viable for a production-grade project, but I do think as-is it offers a great opportunity to hack together useful web resources using Clojure.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#what-are-we-going-to-build" id="what-are-we-going-to-build"&gt;&lt;/a&gt;What are we going to build?&lt;/h2&gt;
+&lt;p&gt;This guide explains how to build a basic page that fetches bands sorted by rank. Because I lack both taste and maturity, I&amp;rsquo;ve chosen a sample of some of my favorite metal bands. It should be pretty self explanatory to customize it to your liking if you find even the references unpalatable.&lt;/p&gt;
+&lt;p&gt;The purpose of this simple project is to demonstrate querying a database, installing pods, using shared libraries, and creating a properly formatted CGI-bin response to return to browsers.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cgi.eccentric-j.com/metal.clj"&gt;&lt;img src="/img/blog/6-clj-cgi-example.jpg" alt="Screenshot of the Example Project this Guide Details" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cgi.eccentric-j.com/metal.clj"&gt;https://cgi.eccentric-j.com/metal.clj&lt;/a&gt; [&lt;a href="https://github.com/eccentric-j/clj-cgi-example"&gt;Source on Github&lt;/a&gt;]&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#requirements" id="requirements"&gt;&lt;/a&gt;Requirements&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;A host that supports cgi-scripts&lt;/li&gt;
+&lt;li&gt;The Babashka static binary&lt;/li&gt;
+&lt;li&gt;The Babashka PostgreSQL pod static binary&lt;/li&gt;
+&lt;li&gt;Working with Libaries&lt;/li&gt;
+&lt;li&gt;Create a postgres database and example table&lt;/li&gt;
+&lt;li&gt;A Clojure script to return an HTML response&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;&lt;a href="#directory-structure" id="directory-structure"&gt;&lt;/a&gt;Directory Structure&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;~/public_html/clojure-web-examples
+|
+| lib/
+| | honeysql.jar
+| | gaka.jar
+|
+| metal/
+| | core.clj
+| | style.clj
+|
+| metal.clj
+| prod.secrets.edn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;&lt;a href="#hosting" id="hosting"&gt;&lt;/a&gt;Hosting&lt;/h3&gt;
+&lt;p&gt;Shared hosts are often the cheapest hosts with a large quantity of resources. With a single account you can host multiple sites and databases. All that&amp;rsquo;s required is finding a shared web-host that offers custom cgi-scripts and perhaps PostgreSQL to follow along with this guide. A Virtual-Private-Server (VPS) could work as well but may take more configuration and more care towards security.&lt;/p&gt;
+&lt;p&gt;I am using &lt;a href="https://bluehost.com"&gt;https://bluehost.com&lt;/a&gt;, that said I got the account 3 years ago in 2018 so be sure the shared hosting service you select does support cgi-scripts as offerings may change over time.&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#apache-handlers" id="apache-handlers"&gt;&lt;/a&gt;Apache Handlers&lt;/h4&gt;
+&lt;p&gt;Depending on the shared host chosen, you may have the option of configuring Apache Handlers. When configured, requesting a .clj file runs it as a cgi-script. If this option is not available, you will likely have to place your entry script in your &lt;code&gt;cgi-bin&lt;/code&gt; directory. If using Bluehost, look for cPanel &amp;gt; Advanced &amp;gt; Apache Handlers.&lt;/p&gt;
+&lt;p&gt;Alternatively you can create a .htaccess file like the following in your site&amp;rsquo;s directory:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AddHandler cgi-script .clj
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;&lt;a href="#download-install-babashka-static-binary" id="download-install-babashka-static-binary"&gt;&lt;/a&gt;Download &amp;amp; Install Babashka Static Binary&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/babashka/babashka"&gt;Babashka&lt;/a&gt;, created by Borkdude (Michiel Borkent), is the binary to run Clojure files as a script. For example, &lt;code&gt;bb -f fetch-contacts.clj&lt;/code&gt;. The Babashka binary contains the Clojure Java core library, Borkdude’s &lt;a href="https://github.com/borkdude/sci"&gt;sci&lt;/a&gt; (Small Clojure Interpreter) library, a CLI, and some common, convenient third-party libraries all compiled into a native binary using &lt;a href="https://www.graalvm.org/"&gt;Graal VM&lt;/a&gt;. This allows Babashka to run a Clojure file fresh in &amp;lt; 10ms which is perfect for our webserver scripting purposes!&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Visit the releases page &lt;a href="https://github.com/babashka/babashka/releases"&gt;https://github.com/babashka/babashka/releases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download the static linux zip or whichever one that closely matches your shared hosting service. At the time of writing, I downloaded &lt;code&gt;babashka-0.2.8-linux-static-amd64.zip&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Once downloaded, extract it on your local computer&lt;/li&gt;
+&lt;li&gt;Upload the bb binary somewhere like &lt;code&gt;~/bin/bb&lt;/code&gt; on your shared host.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It&amp;rsquo;s a good idea to keep the binary directly out of reach of your public_html folder so attackers can&amp;rsquo;t remotely run code against it. Make sure the permissions are &lt;code&gt;755&lt;/code&gt; so that it can execute from public web requests. Test it by running &lt;code&gt;bb&lt;/code&gt; in a remote shell, if you get the Babashka Clojure REPL it works! If not check your PATH environment variable or try using an absolute path.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#download-install-babashka-postgresql-pod" id="download-install-babashka-postgresql-pod"&gt;&lt;/a&gt;Download &amp;amp; Install Babashka PostgreSQL Pod&lt;/h3&gt;
+&lt;p&gt;This sample project connects to a Postgres database to fetch the ranked bands. The common Java Database Connection (JDBC) library does not support Babashka out of the box due to its dependency on the Java Virtual Machine (JVM) runtime. Fortunately, Babashka offers pods which allow programs written in different languages to communicate with Babashka scripts. When using Babashka on your local machine for instance, the pods API automatically downloads and loads the target pod. On my shared host, that functionality did not work as it was downloading and building binaries that depended on specific build tools on the server. To solve this, download the static binary of the pod and upload it to the server.&lt;/p&gt;
+&lt;p&gt;This step is similar to installing Babashka.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Visit &lt;a href="https://github.com/babashka/babashka-sql-pods/releases"&gt;https://github.com/babashka/babashka-sql-pods/releases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download the latest &lt;code&gt;pod-babashka-postgresql-x.y.z-linux-static-amd64.zip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Extract the zip on your local machine&lt;/li&gt;
+&lt;li&gt;Upload the binary to the lib directory we are going to use like &lt;code&gt;~/lib/pod-babashka-postgresl&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ensure it has &lt;code&gt;755&lt;/code&gt; permissions so it runs publicly through the cgi-script.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#create-a-postgres-database-with-an-example-table" id="create-a-postgres-database-with-an-example-table"&gt;&lt;/a&gt;Create a postgres database with an example table&lt;/h3&gt;
+&lt;p&gt;This article presumes your shared host is offering PostgreSQL databases and that you&amp;rsquo;re familiar with creating them through cPanel. Consult your shared hosts documentation for instructions. If your shared host does not offer PG databases, you may be able to use a different pod.&lt;/p&gt;
+&lt;p&gt;After setting up your database, run the following SQL query:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-sql"&gt;SET client_encoding = 'UTF8';
+
+CREATE TABLE metal_bands (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    genre character varying(100) NOT NULL,
+    popularity integer,
+    rank integer NOT NULL,
+    recommended_album character varying(255),
+    music_video text,
+    comment text
+);
+
+COMMENT ON COLUMN metal_bands.popularity IS 'Out of 5';
+
+CREATE SEQUENCE metal_bands_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+ALTER SEQUENCE metal_bands_id_seq OWNED BY metal_bands.id;
+
+SELECT pg_catalog.setval('metal_bands_id_seq', 9, true);
+
+ALTER TABLE ONLY metal_bands ALTER COLUMN id SET DEFAULT nextval('metal_bands_id_seq'::regclass);
+
+INSERT INTO metal_bands VALUES (1, 'Slipknot', 'nu-metal', 5, 1, 'Slipknot (1999)', 'https://www.youtube.com/watch?v=ZPUZwriSX4M', 'Much angsty and yet much iconic');
+INSERT INTO metal_bands VALUES (8, 'Soilwork', 'melodic-death-metal', 3, 4, 'The Ride Majestic (2015)', 'https://www.youtube.com/watch?v=kme-sxY2pAQ', 'A departure from their previous sound but builds on their strengths with catchy cleans accented by heavy moments');
+INSERT INTO metal_bands VALUES (4, 'Mastodon', 'progressive', 4, 9, 'Leviathan (2004)', 'https://www.youtube.com/watch?v=labytsb3gfI', 'Catchy hooks, dynamic melodies, energetic vocals accompanied by consistent concepts to their albums');
+INSERT INTO metal_bands VALUES (2, 'Converge', 'post-hardcore', 3, 6, 'All We Love We Leave Behind (2012)', 'https://www.youtube.com/watch?v=CrcY9I-BbjM', 'Unique band with hardcore and punk roots');
+INSERT INTO metal_bands VALUES (6, 'Lifelover', 'suicidal-depressive-black-metal', 1, 2, 'Dekadens (2009)', 'https://www.youtube.com/watch?v=uhqofz6xPCc', 'A hauntingly tragic sound that adds some lofi energy to the typical 11/10 black metal genre.');
+INSERT INTO metal_bands VALUES (3, 'Igorrr', 'avant-garde/experimental', 2, 7, 'Hallelujah (2012)', 'https://www.youtube.com/watch?v=rEuMAqfuCrI', 'Combines sampling, classical music, and EDM into chaotic but beautiful compositions');
+INSERT INTO metal_bands VALUES (7, 'Devil Master', 'black-metal/rock', 1, 8, 'Satan Spits on Children of Light (2019)', 'https://www.youtube.com/watch?v=bWIrLDKY_Ew', 'A very high-energy fusion of black metal, punk, and rock');
+INSERT INTO metal_bands VALUES (9, 'Shade Empire', 'symphonic-black-metal', 2, 5, 'Omega Arcane (2013)', 'https://www.youtube.com/watch?v=rBqaWfnCRZE', 'Story driven black metal mixed with some striking symphonic elements creating a very beautiful and heavy wave of sound');
+INSERT INTO metal_bands VALUES (5, 'Antigama', 'mathgrind', 2, 3, 'The Insolent (2016)', 'https://www.youtube.com/watch?v=-Qt4UwwbIZs', 'Quite possibly the most abrasive band on this list, it''s not meant to be comfortable you endure it and feel fortunate to have made it through');
+
+ALTER TABLE ONLY metal_bands
+    ADD CONSTRAINT metal_bands_pkey PRIMARY KEY (id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ensure the user you created has at least read access to the table. If managed through cPanel it&amp;rsquo;s easy to miss that. After you create a user, add it to the db.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#working-with-libraries" id="working-with-libraries"&gt;&lt;/a&gt;Working with Libraries&lt;/h2&gt;
+&lt;p&gt;To develop more sophisticated scripts, thare are plenty of mature libraries available in the Clojure ecosystem to leverage. To use them with the web scripts, there are three routes to choose from.&lt;/p&gt;
+&lt;p&gt;A good number of Clojure libraries are compatible with Babashka available for use. Consult to see the known list of compatible libraries:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/babashka/babashka/blob/master/doc/projects.md"&gt;https://github.com/babashka/babashka/blob/master/doc/projects.md&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#uberjar-all-deps" id="uberjar-all-deps"&gt;&lt;/a&gt;Uberjar all deps&lt;/h3&gt;
+&lt;p&gt;This method creates a single jar that contains all the project libraries from a deps.edn file.&lt;/p&gt;
+&lt;p&gt;Babashka and the Clojure CLIs can install deps and create an uberjar from a deps.edn&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;bb -cp $(clojure -Awithout-clojure -Spath) --uberjar project-libs.jar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you are on Windows you can use replace the calls to Clojure to the Clojure CLIs built into Babashka.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;bb -cp $(bb --clojure -Awithout-clojure -Spath) --uberjar project-libs.jar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;-Awithout-clojure&lt;/code&gt; is using an alias from deps.edn that removes Clojure core from the jar, this is an optimization because Babashka already provides the Clojure core itself.&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#pros" id="pros"&gt;&lt;/a&gt;Pros&lt;/h4&gt;
+&lt;p&gt;If multiple libraries share dependencies, the uberjar will factor out the common dependencies.&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#cons" id="cons"&gt;&lt;/a&gt;Cons&lt;/h4&gt;
+&lt;p&gt;If you anticipate having multiple Clojure web scripts on a shared host, an uberjar for each project will consume more storage.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#uberjar-individual-libraries" id="uberjar-individual-libraries"&gt;&lt;/a&gt;Uberjar individual libraries&lt;/h3&gt;
+&lt;p&gt;Use Babashka&amp;rsquo;s uberjar functionality to create separate jars for each library. This allows you to share it in a &lt;code&gt;lib&lt;/code&gt; folder outside of your project directory and reuse them across multiple projects in a shared hosting account. This is the method this guide will walk through it in the next section.&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#pros" id="pros"&gt;&lt;/a&gt;Pros&lt;/h4&gt;
+&lt;p&gt;Reuse libraries across projects by creating individual jars for each one.&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#cons" id="cons"&gt;&lt;/a&gt;Cons&lt;/h4&gt;
+&lt;p&gt;If those libraries have dependencies, and they share the same dependencies, then the jars will contain duplicated code which may affect performance and storage.&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#why-did-i-choose-this-option" id="why-did-i-choose-this-option"&gt;&lt;/a&gt;Why did I choose this option?&lt;/h4&gt;
+&lt;p&gt;Libraries like Honeysql, Hiccup, and Gaka, do not have any dependencies beyond Clojure which we will remove from the uberjar since that comes with Babashka. Since I want to continue making experiments I felt having those libraries readily available would speed up the process and be the most flexible.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#uberscript-the-entire-application" id="uberscript-the-entire-application"&gt;&lt;/a&gt;Uberscript the entire application&lt;/h3&gt;
+&lt;p&gt;To optimize performance, Babashka can bundle libraries and the web scripts together by reading through the &lt;code&gt;require&lt;/code&gt; calls. Additionally, &lt;a href="https://github.com/borkdude/carve"&gt;carve&lt;/a&gt; can trim away the unused code resulting in smaller bundle sizes which should result in faster performance when requesting the script from the browser.&lt;/p&gt;
+&lt;p&gt;Modify the command below to create an uberscript for your project. Note that we will be modifying the classpath dynamically in our main request script so you will need to take that into account when supplying the classpath string to &lt;code&gt;bb&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;bb --classpath &amp;quot;your-lib1.jar:yourlib2.jar:src&amp;quot; --main foo --uberscript uber.clj
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;See &lt;a href="https://book.babashka.org/#_uberscript"&gt;https://book.babashka.org/#_uberscript&lt;/a&gt; to learn more about this process.&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#pros" id="pros"&gt;&lt;/a&gt;Pros&lt;/h4&gt;
+&lt;p&gt;Smallest bundle size resulting in faster performance&lt;/p&gt;
+&lt;h4&gt;&lt;a href="#cons" id="cons"&gt;&lt;/a&gt;Cons&lt;/h4&gt;
+&lt;p&gt;Requires a more complex build process: generate an uberscript, then carve out unused code on every change to the web scripts. Web scripts will not be individually available on the server so devs can&amp;rsquo;t ssh in and test individual script files or make on-the-fly changes. They will need access to the source and run those build steps.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#creating-an-uberjar-for-honeysql" id="creating-an-uberjar-for-honeysql"&gt;&lt;/a&gt;Creating an uberjar for Honeysql&lt;/h3&gt;
+&lt;p&gt;To query the bands from the db, we could write a raw SQL query string but where is the fun in that? Clojure offers HoneySQL, a library for writing SQL queries as structured data. If using our own VM, local computer, or VPS, we could use a tool like &lt;code&gt;clj&lt;/code&gt; and &lt;code&gt;deps.edn&lt;/code&gt; to automatically download and install the libraries we need. Depending on your shared host, that&amp;rsquo;s not going to work. Fear not though for all is not lost! We can specify libraries in a local deps.edn and use Clojure&amp;rsquo;s &lt;code&gt;clj&lt;/code&gt; CLI with Babashka to create an uberjar.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a &lt;code&gt;deps.edn&lt;/code&gt; similar to the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-clojure"&gt;{:paths []
+:deps {honeysql/honeysql {:mvn/version &amp;quot;1.0.444&amp;quot;}}
+:aliases {:remove-clojure {:classpath-overrides {src nil
+                                                org.clojure/clojure nil
+                                                org.clojure/spec.alpha nil
+                                                org.clojure/core.specs.alpha nil}}}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;clojure&lt;/code&gt; CLI can read this file and download the libraries we want to work with. The alias is important so that Babashka can filter out redundant libraries to include in the uberjar.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run this Babashka command to create an uberjar:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;bb -cp $(clojure -Aremove-clojure -Spath) --uberjar honeysql.jar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Upload this file to your lib directory as suggested when uploading the PostgreSQL pod such as &lt;code&gt;~/lib/honeysql.jar&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We are going to add files from that folder to Babashka&amp;rsquo;s classpaths. This approach creates a shared folder of libraries and pods multiple projects can use. If you would prefer to keep libraries separate you could create an uberjar with all your code and libraries bundled together. I intend on making multiple projects with this technique so I&amp;rsquo;m going with the shared lib directory and creating individual jars for now.&lt;/p&gt;
+&lt;p&gt;To make this process simpler I&amp;rsquo;ve drafted a script called &amp;ldquo;depjar&amp;rdquo; that uses Babashka to create individual jars from deps.edn:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/eccentric-j/clj-cgi-example/tree/main/depjar"&gt;https://github.com/eccentric-j/clj-cgi-example/tree/main/depjar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can use it by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;clj-cgi-example/depjar/depjar.clj ./deps.edn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To process your deps.edn and create jars for each dependency.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#the-clojure-files" id="the-clojure-files"&gt;&lt;/a&gt;The Clojure Files&lt;/h2&gt;
+&lt;p&gt;The first script configures our project environment, imports our code, and prints headers and the HTML body. This file may accessed directly from a browser.&lt;/p&gt;
+&lt;p&gt;I have named this file &lt;code&gt;metal.clj&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-clojure"&gt;#!/bin/env /home1/&amp;lt;username&amp;gt;/bin/bb                   ;; (1)
+
+(ns cgi.metal
+  (:require
+   [babashka.classpath :refer [add-classpath]]
+   [babashka.pods :as pods]
+   [clojure.java.shell :refer [sh]]
+   [clojure.string :as s]
+   [hiccup2.core :refer [html]]))
+
+;; Dynamic Libs
+(def LIB-PATH &amp;quot;/home1/&amp;lt;username&amp;gt;/lib/&amp;quot;)
+(def CWD (or (System/getenv &amp;quot;DOCUMENT_ROOT&amp;quot;) (System/getenv &amp;quot;PWD&amp;quot;)))
+
+(defn lib
+  &amp;quot;
+  Create an absolute path to a jar file in sibling lib directory
+  Takes a string filename like \&amp;quot;honeysql.jar\&amp;quot;
+  Returns a string like \&amp;quot;/path/to/dir/lib/honeysql.jar\&amp;quot;.
+  &amp;quot;
+  [path]
+  (str LIB-PATH path))
+
+;; Add jars and current directory to classpath to import library code
+
+(add-classpath (s/join &amp;quot;:&amp;quot; [CWD                       ;; (2)
+                            (lib &amp;quot;gaka.jar&amp;quot;)
+                            (lib &amp;quot;honeysql.jar&amp;quot;)]))
+(pods/load-pod (lib &amp;quot;pod-babashka-postgres&amp;quot;))
+
+;; Require our main page code
+;; Must come after updating the class path
+
+(require
+ '[metal.core :as metal])                             ;; (3)
+
+;; CGI scripts must print headers then body
+
+(println &amp;quot;Content-type:text/html\r\n&amp;quot;)                ;; (4)
+(println (str (html metal/content)))                  ;; (5)
+
+(System/exit 0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Be sure to replace &lt;code&gt;&amp;lt;username&amp;gt;&lt;/code&gt; with your shared hosting username. Run &lt;code&gt;pwd&lt;/code&gt; or &lt;code&gt;whoami&lt;/code&gt; in a terminal if available for quick reference.&lt;/li&gt;
+&lt;li&gt;Add paths to the library jars we wish to use that we uploaded to the &lt;code&gt;lib&lt;/code&gt; directory outside of &lt;code&gt;public_html&lt;/code&gt;. Replace &lt;code&gt;&amp;lt;username&amp;gt;&lt;/code&gt; with your actual username from step 1.&lt;/li&gt;
+&lt;li&gt;With the classpaths updated, import the adjacent source files for our app logic.&lt;/li&gt;
+&lt;li&gt;CGI scripts must print the headers before the body response. If it&amp;rsquo;s not formatted correctly visiting the page will render a 500 server error response.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now lets create a source file that actually renders some content! For this project I&amp;rsquo;ve named it &lt;code&gt;metal/core.clj&lt;/code&gt; because it&amp;rsquo;s both a common Clojure idiom, and a sub-genre of metal music.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-clojure"&gt;(ns metal.core
+  (:require
+   [clojure.string :as s]
+   [hiccup.util :refer [raw-string]]
+   [honeysql.core :as sql]
+   [pod.babashka.postgresql :as pg]
+   [gaka.core :refer [css]]
+   [metal.style :refer [rems]]))
+
+;; Load secrets for the db
+(def secrets (read-string (slurp &amp;quot;prod.secret.edn&amp;quot;)))
+
+;; Connect to the database
+(def db {:dbtype   &amp;quot;postgresql&amp;quot;
+         :host     &amp;quot;localhost&amp;quot;
+         :dbname   (:db/name secrets)
+         :user     (:db/user secrets)
+         :password (:db/password secrets)
+         :port     5432})
+
+;; Fetch bands from the database
+(def bands (pg/execute! db (sql/format {:select [:*]
+                                        :from [:metal_bands]
+                                        :order-by [[:rank :desc]]})))
+
+(defn embed-url
+  &amp;quot;Transforms a public youtube URL to the embedded URL&amp;quot;
+  [yt-url]
+  (as-&amp;gt; yt-url $
+    (s/split $ #&amp;quot;=&amp;quot;)
+    (drop 1 $)
+    (s/join &amp;quot;&amp;quot; $)
+    (str &amp;quot;https://youtube.com/embed/&amp;quot; $)))
+
+(defn popularity
+  [pop-rank]
+  (str (s/join &amp;quot;&amp;quot; (repeat pop-rank &amp;quot;★&amp;quot;))
+       (s/join &amp;quot;&amp;quot; (repeat (- 5 pop-rank) &amp;quot;☆&amp;quot;))))
+
+(def style
+  (css
+      [:body
+       {:padding 0
+        :margin 0
+        :font-family :sans-serif
+        :background-color &amp;quot;#E5E5E5&amp;quot;}]
+      [:h1
+       {:font-size (rems 32)}]
+      [:h2
+       {:font-size (rems 24)
+        :font-family &amp;quot;\&amp;quot;Metal Mania\&amp;quot;, sans-serif&amp;quot;}]
+      [:h3
+       {:font-size (rems 20)}]
+      [:h4
+       {:font-size (rems 18)}]
+      [:.example
+       {:padding &amp;quot;2rem&amp;quot;
+        :text-align :center
+        :margin-bottom &amp;quot;4rem&amp;quot;}]
+      [:.cards
+       {:list-style &amp;quot;none&amp;quot;
+        :display &amp;quot;flex&amp;quot;
+        :flex-flow &amp;quot;row wrap&amp;quot;
+        :align-items &amp;quot;stretch&amp;quot;
+        :justify-content &amp;quot;space-evenly&amp;quot;
+        :margin &amp;quot;0 auto&amp;quot;
+        :padding &amp;quot;0&amp;quot;
+        :max-width &amp;quot;1100px&amp;quot;}]
+      [:.cards__item
+       {:background-color &amp;quot;#FFF&amp;quot;
+        :flex &amp;quot;0 0 320px&amp;quot;
+        :box-sizing &amp;quot;border-box&amp;quot;
+        :position &amp;quot;relative&amp;quot;
+        :margin &amp;quot;1rem&amp;quot;
+        :box-shadow &amp;quot;0 0 10px 0 rgba(0, 0, 0, 0.2)&amp;quot;}]
+      [:.card
+       {:box-sizing :border-box
+        :width &amp;quot;320px&amp;quot;
+        :display &amp;quot;block&amp;quot;
+        :position :relative
+        :text-align :left
+        :border-bottom-left-radius &amp;quot;5px&amp;quot;
+        :border-bottom-right-radius &amp;quot;5px&amp;quot;}]
+      [:.rank
+       {:position :absolute
+        :right &amp;quot;-16px&amp;quot;
+        :top &amp;quot;-16px&amp;quot;
+        :z-index 100
+        :border-radius &amp;quot;50%&amp;quot;
+        :width &amp;quot;32px&amp;quot;
+        :height &amp;quot;32px&amp;quot;
+        :background &amp;quot;#fff&amp;quot;
+        :line-height &amp;quot;32px&amp;quot;
+        :text-align :center
+        :font-size (rems 14)
+        :font-style :italic
+        :color &amp;quot;#666&amp;quot;}]
+      [:.card__body
+       {:padding &amp;quot;1rem&amp;quot;}]
+      [:.detail
+       {:margin-bottom &amp;quot;1rem&amp;quot;}]
+      [:.label
+       {:display &amp;quot;block&amp;quot;
+        :font-weight &amp;quot;bold&amp;quot;}]
+      [:.comment
+       {:font-size (rems 14)
+        :line-height 1.4}]))
+
+(def example
+  [:section.example
+   [:h1 &amp;quot;Running Clojure as a CGI-bin Script Example&amp;quot;]
+   [:h2 &amp;quot;Example Project&amp;quot;]
+   [:p &amp;quot;A Metal Subgenre Sample Platter&amp;quot;]
+   [:ul.cards
+    (for [band bands]
+      [:li.cards__item
+       [:div.card
+        [:span.rank
+         (inc (- (count bands) (:metal_bands/rank band)))]
+        [:iframe
+         {:width &amp;quot;320&amp;quot;
+          :height &amp;quot;180&amp;quot;
+          :src (embed-url (:metal_bands/music_video band))
+          :frameborder &amp;quot;0&amp;quot;
+          :allow &amp;quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&amp;quot;
+          :allowfullscreen true}]
+        [:div.card__body
+         [:h3 (:metal_bands/name band)]
+         [:div.detail
+          [:span.label &amp;quot;Genre&amp;quot;]
+          [:span (:metal_bands/genre band)]]
+         [:div.detail
+          [:span.label &amp;quot;Popularity&amp;quot;]
+          [:span (popularity (:metal_bands/popularity band))]]
+         [:div.detail
+          [:span.label &amp;quot;Recommended Album&amp;quot;]
+          [:span
+           {:style {:font-style &amp;quot;italic&amp;quot;}}
+           (:metal_bands/recommended_album band)]]
+         [:p.comment
+          (:metal_bands/comment band)]]]])]])
+
+(def content
+  [:html
+   [:head
+    [:title &amp;quot;Live Clojure CGI Script Example&amp;quot;]
+    [:meta {:charset &amp;quot;UTF-8&amp;quot;}]
+    [:link {:rel &amp;quot;preconnect&amp;quot;
+            :href &amp;quot;https://fonts.gstatic.com&amp;quot;}]
+    [:link {:rel &amp;quot;stylesheet&amp;quot;
+            :href &amp;quot;https://fonts.googleapis.com/css2?family=Metal+Mania&amp;amp;family=Sriracha&amp;amp;display=swap&amp;quot;}]
+    [:link {:rel &amp;quot;stylesheet&amp;quot;
+            :href &amp;quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css&amp;quot;}]
+    [:style (raw-string style)]]]
+   [:body
+    [:div#page
+     example]
+    [:script {:src &amp;quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js&amp;quot;}]
+    [:script {:src &amp;quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/clojure.min.js&amp;quot;}]
+    [:script &amp;quot;hljs.initHighlightingOnLoad();&amp;quot;]]])```
+
+Lastly, lets create a `metal/style.clj` with a rems helper function.
+
+```clojure
+(ns metal.style)
+
+(defn rems
+  [px]
+  (str (float (/ px 16)) &amp;quot;rem&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;&lt;a href="#testing-debugging" id="testing-debugging"&gt;&lt;/a&gt;Testing &amp;amp; Debugging&lt;/h2&gt;
+&lt;p&gt;When everything works, it just works. Visit the &lt;code&gt;https://yourhost.tld/metal.clj&lt;/code&gt; script and the page should render. If there is even a slight error you are likely going to get a generic 500 error response. Your host might be logging these around your home folder, or you may find a logging page in the hosting cPanel. This will be your first goto to figuring out what went wrong. The most common error you will likely run into is not setting the permission of your public Clojure scripts to &lt;code&gt;755&lt;/code&gt;. Fix that by running a bash command like &lt;code&gt;chmod +x metal.clj&lt;/code&gt; on the server.&lt;/p&gt;
+&lt;p&gt;If logging is not revealing the problem, another way to go about debugging is to run the script through the shell on your host. Simply ssh into your host and run &lt;code&gt;./metal.clj&lt;/code&gt;. It should output the desired HTML response. This will produce much more helpful output if a runtime error occurs. Be aware though that different environment variables change depending on if the script is running through the cgi-bin from the browser request or locally from a terminal.&lt;/p&gt;
+&lt;p&gt;If you recall, we are setting the CWD conditionally:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-clojure"&gt;(def CWD (or (System/getenv &amp;quot;DOCUMENT_ROOT&amp;quot;) (System/getenv &amp;quot;PWD&amp;quot;)))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The script supports running it as a cgi-script and locally within a shell.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#tradeoffs" id="tradeoffs"&gt;&lt;/a&gt;Tradeoffs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Installing other libraries is not as streamlined as with the JVM or ClojureScript, you will likely need to manually uberjar and upload them.&lt;/li&gt;
+&lt;li&gt;Some JVM specific libraries may not work with Babashka which then requires pods to provide separate CLIs Babashka can communicate with.&lt;/li&gt;
+&lt;li&gt;This is not the most performant option in the world, it&amp;rsquo;s pretty quick, especially compared to typical JVM startup times but there are few more layers in play here, but about the same as a typical PHP setup. Additionally shared hosting is not the fastest route anyway.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href="#predicted-questions-and-answers" id="predicted-questions-and-answers"&gt;&lt;/a&gt;Predicted Questions and Answers&lt;/h2&gt;
+&lt;h3&gt;&lt;a href="#do-i-have-to-use-the-full-path-to-the-bb-binary-in-the-shebang" id="do-i-have-to-use-the-full-path-to-the-bb-binary-in-the-shebang"&gt;&lt;/a&gt;Do I have to use the full path to the bb binary in the shebang?&lt;/h3&gt;
+&lt;p&gt;Yes. When running the script through the cgi it is not running through a shell user&amp;rsquo;s profile which has the PATH configured to access the &lt;code&gt;bb&lt;/code&gt; binary. There may be a way to make the entrypoint script generic though. While I chose to use the Clojure file as the page a user can access from the web, you could instead write a generic babashka or bash script that calculates paths from the current directory, env var &lt;code&gt;DOCUMENT_ROOT&lt;/code&gt;, and dynamically loads the file or runs it as a subordinate shell process. This felt like a rabbit hole to me though. If a pattern emerges after creating more sites, I&amp;rsquo;ll likely refactor that.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#a-pod-does-not-have-a-static-binary" id="a-pod-does-not-have-a-static-binary"&gt;&lt;/a&gt;A Pod does not have a static binary&lt;/h3&gt;
+&lt;p&gt;The short answer is to build the static binary yourself on your local machine. The long answer is you can use the Dockerfile and scripts in &lt;a href="https://github.com/eccentric-j/clj-cgi-example"&gt;https://github.com/eccentric-j/clj-cgi-example&lt;/a&gt; to build the static binary.&lt;/p&gt;
+&lt;p&gt;Also please consider making a pull-request (PR) to create a static binary automatically on each release. For an example of how to do that check out my PR for the babashka-sql-pods &lt;a href="https://github.com/babashka/babashka-sql-pods/pull/21"&gt;https://github.com/babashka/babashka-sql-pods/pull/21&lt;/a&gt; for an example. Just remember to update the generate_circleci.clj file and not the .circle/config.yml file like I did. &#x1f605;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#is-there-a-faster-way-to-create-a-separate-jar-for-each-file-i-need" id="is-there-a-faster-way-to-create-a-separate-jar-for-each-file-i-need"&gt;&lt;/a&gt;Is there a faster way to create a separate JAR for each file I need?&lt;/h3&gt;
+&lt;p&gt;In my github repo for the example project, there is a script for bundling a library as a jar and moving it into the current directory. Run it on your local machine and make sure you installed Babashka on your local as well.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone my example repo from &lt;a href="https://github.com/eccentric-j/clj-cgi-example"&gt;https://github.com/eccentric-j/clj-cgi-example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Enter into the directory &lt;code&gt;cd clj-cgi-example&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a deps.edn file with your libraries&lt;/li&gt;
+&lt;li&gt;Run the depjar script &lt;code&gt;./depjar/depjar.clj ./deps.edn&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Upload the newly created jar files to your server and you are good to go &#x1f680;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;&lt;a href="#how-do-i-create-config-files-that-i-can-load-in-my-clojure-scripts-but-not-expose-to-the-web" id="how-do-i-create-config-files-that-i-can-load-in-my-clojure-scripts-but-not-expose-to-the-web"&gt;&lt;/a&gt;How do I create config files that I can load in my Clojure scripts but not expose to the web?&lt;/h3&gt;
+&lt;p&gt;There are many ways to solve this problem. For now I went with having a &lt;code&gt;prod.secret.edn&lt;/code&gt; with my db credentials in a simple hash-map. Make sure to set the permissions to &lt;code&gt;600&lt;/code&gt; so it&amp;rsquo;s only readable and writable by the user. If an attacker attempts to visit this file it will return a 403 Forbidden error. Please keep in mind I&amp;rsquo;m by no means a security expert so you should do your own testing to pick the right solution for you.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#can-i-use-the-apache-mod-rewrite-to-create-friendly-urls" id="can-i-use-the-apache-mod-rewrite-to-create-friendly-urls"&gt;&lt;/a&gt;Can I use the Apache mod_rewrite to create friendly URLS?&lt;/h3&gt;
+&lt;p&gt;Yes! Create a &lt;code&gt;.htaccess&lt;/code&gt; similar to the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;IfModule mod_rewrite.c&amp;gt;
+RewriteEngine On
+RewriteBase &amp;quot;/&amp;quot;
+RewriteCond &amp;quot;%{REQUEST_URI}&amp;quot; &amp;quot;!^/img&amp;quot;
+RewriteRule &amp;quot;.*&amp;quot; &amp;quot;metal.clj&amp;quot; [L,PT]
+&amp;lt;/IfModule&amp;gt;
+AddHandler cgi-script .clj
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And any requests to anything other than images will rewrite to the metal.clj script. For instance visiting &lt;code&gt;https://cgi.eccentric-j.com&lt;/code&gt; gets rerouted to &lt;code&gt;metal.clj&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#when-should-i-use-a-pod-vs-uberjar-" id="when-should-i-use-a-pod-vs-uberjar-"&gt;&lt;/a&gt;When should I use a pod vs. uberjar ?&lt;/h3&gt;
+&lt;p&gt;Uberjar is best when dealing with Babashka friendly Clojure libraries. Pods are CLIs that act as a service exchanging methods with Babashka which support different languages provided the API offers a certain format.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="#where-can-i-learn-more-about-babashka" id="where-can-i-learn-more-about-babashka"&gt;&lt;/a&gt;Where can I learn more about Babashka?&lt;/h3&gt;
+&lt;p&gt;Check out &lt;a href="https://book.babashka.org"&gt;https://book.babashka.org&lt;/a&gt; for documentation around Babashka such as arguments and available APIs.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#alternatives" id="alternatives"&gt;&lt;/a&gt;Alternatives&lt;/h2&gt;
+&lt;p&gt;One alternative I considered but have not explored is using Graal VM to compile a static binary that contains the entire web app and supporting libraries. The downside of this approach is that if any file changes, you will need to rebuild the binary and upload it to the server. Then you can access it directly via cgi-bin.&lt;/p&gt;
+&lt;p&gt;Github user alekcz (&lt;a href="https://alexanderoloo.com/"&gt;Alexander Oloo&lt;/a&gt;) has begun drafting &lt;a href="https://github.com/alekcz/pcp"&gt;PCP&lt;/a&gt;: A Clojure processor that runs a SCGI server that can act as a replacement for a long-running php-fpm process. This may not be best suited for a shared hosting service but would definitely be good for a VPS hosting service. I look forward to seeing it progress!&lt;/p&gt;
+&lt;p&gt;Another possible option is Phel lang &lt;a href="https://github.com/phel-lang/phel-lang"&gt;https://github.com/phel-lang/phel-lang&lt;/a&gt;. It&amp;rsquo;s a lisp-family language that compiles to PHP directly inspired by Clojure and &lt;a href="https://janet-lang.org/"&gt;Janet&lt;/a&gt;. The downside is that Clojure comes with a mature body of help content, tutorials, libraries, and community for support where as Phel has only just sprouted.&lt;/p&gt;
+</content><author><name>Eccentric J</name><email>jayzawrotny@gmail.com</email></author><category term="experiment"></category><category term="web"></category><category term="clojure"></category></entry><entry><id>urn:uuid:865C58D3-F5B4-4681-8762-87BB86F86E91</id><title>Our biggest obstacles are in our own minds</title><link href="https://eccentric-j.com/blog/biggest-obstacles.html" type="text/html" title="Our biggest obstacles are in our own minds" rel="alternate"></link><published>2020-06-29T02:29:00Z</published><updated>2020-06-29T02:29:00Z</updated><content type="html" xml:base="https://eccentric-j.com/blog/biggest-obstacles.html">&lt;p&gt;You might be thinking, “No it’s not! It’s completing my not-yet-open-sourced AutomaticCrudAbstractionLayer UI to communicate with my upcoming patent for my FormAbstractionOnTopOfAFormLayer wrapper to dispatch EventNodes to my reducer service to deterministically update my store state. Then I’m going to produce a framework with it to build a platform and sell it a software-as-a-service product!” Perhaps in a way, that is an obstacle, but then let’s ask, “What gets in the way of me accomplishing that?” Some more more practical reasons may come up, but eventually we may realize a lot of those stem from what’s in the minds. Distractions, fears, wants, needs, anger, and especially more complex problems like indecisiveness and anxiety constantly get in the way of a person achieving their goals. One may not even notice how much such obstacles can get in their way on a nearly constant basis.&lt;/p&gt;
 &lt;p&gt;The biggest issue engineers new and old wrestle with is ego. Ego can really mess a mind up by causing oneself and those around them a lot of pain. An uncontested, poorly researched theory of mine is that building software makes us feel like geniuses and without care, we start to believe it.&lt;/p&gt;
 &lt;p&gt;When we get to that point we believe every line of code, thought, or criticism must be genius as well. I’m guilty of moments like that myself. Sometimes when discussing software dev with other programmers of other languages part of my brain foolishly screams, &amp;ldquo;TELL THEM ABOUT CLOJURE CLOJURE IS AWESOME CLOJURE IS GREAT KEEEP THINGS SSSIIIMMMPLLEEE USE CllooJjjuurEEE&amp;rdquo; over and over and over again. That is my ego. The truth is I prefer Clojure because it feels productive, and enjoyable to me. But others have tried it and moved on, some will never try it for various reasons, and others may find it simply doesn’t meet their needs or spark joy in them like it does for me.&lt;/p&gt;
 &lt;p&gt;They’re not wrong; they’re not unenlightened. While it’s largely beneficial to learn different languages than what is familiar, that’s not something to force on others. I am not better than another because I’ve found a language I prefer over the conventional options; I’m not better because I did try to learn something different than what I’m used to. Time is expensive, I can’t be upset or look down on others because they want to spend it differently.&lt;/p&gt;

@@ -1,11 +1,457 @@
 <!DOCTYPE html>
-<html itemtype="http://schema.org/Blog" lang="en"><head><title>Eccentric J</title><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport"><meta color="#4f5b55" name="msapplication-TileColor"><meta color="#4f5b55" name="theme-color"><meta content="/img/eccentric-j-social.png" property="og:image"><meta content="279" property="og:image:width"><meta content="279" property="og:image:height"><meta content="Eccentric J" property="og:title"><meta content="Eccentric J’s blog on functional programming and software engineering." property="og:description"><meta content="https://eccentric-j.com/" property="og:url"><link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"><link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"><link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"><link href="/site.webmanifest" rel="manifest"><link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"><link href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"><link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css" rel="stylesheet"><link href="//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Source+Sans+Pro" rel="stylesheet"><link href="/css/style.css" rel="stylesheet"><link href="/css/mobile.css" media="screen and (max-width: 929px)" rel="stylesheet"><link href="/css/tablet.css" media="screen and (min-width: 768px) and (max-width: 929px)" rel="stylesheet"><link href="/css/desktop.css" media="screen and (min-width: 930px)" rel="stylesheet"></head><body><div class="page"><i class="drip bg-teal" style="right:1.875rem;width:0.625rem;height:0.625rem;"></i><i class="drip bg-teal" style="right:3.5rem;width:0.5rem;height:0.5rem;"></i><i class="drip bg-teal" style="right:2.625rem;width:0.3125rem;height:0.625rem;"></i><div class="hero"><div class="sidebar"><div class="sidebar__margin"></div><div class="sidebar__inner"><section class="profile text-center profile--bg_dark"><h1 class="profile__title"><a href="/"><img alt="Eccentric J&apos;s Logo" class="profile__logo" src="/img/eccentric-j-logo.svg">Eccentric J</a></h1><ul class="profile__trades"><li class="profile__trade">Engineer</li><li class="profile__trade">Designer</li><li class="profile__trade">Artist</li></ul><blockquote class="profile__quote">Idle parentheses form the devil's playlists.</blockquote></section></div></div></div><div class="layout"><div class="main"><header class="page__header"><h1 class="page__title"><span class="page__path">idle-parens</span><span class="page__sep">/</span><span class="page__path">blog</span></h1></header><div class="content"><div class="blog"><ul class="posts"><li class="posts__item"><article class="post full"><header class="post__header"><a class="post__permalink not-mobile" href="/blog/biggest-obstacles.html"><i class="fa fa-link"></i></a><div class="borders post__headline"><h1 class="post__title"><a class="post__link" href="/blog/biggest-obstacles.html">Our biggest obstacles are in our own minds</a></h1><div class="drips"><i class="drip bg-slate" style="right:1.5rem;top:100%;max-height:3.75rem;width:0.3125rem;height:0.3125rem;"></i><i class="drip bg-slate" style="right:1.1875rem;top:100%;max-height:3.125rem;width:0.1875rem;height:0.5rem;"></i><i class="drip bg-slate" style="right:0.625rem;top:100%;max-height:2.5rem;width:0.5rem;height:0.5rem;"></i></div></div><div class="post__attrs"><time class="post__meta post__date-time" datetime="Mon Jun 29 02:29:00 UTC 2020"><span class="post__date icon fa-calendar-day">June 29, 2020</span><span class="post__time icon fa-clock">02:29 AM</span></time><span class="post__meta"><span class="post__ttr icon fa-stopwatch">5 min. read</span><span class="post__author icon fa-user"><a href="https://eccentric-j.com" target="_blank">Eccentric J</a></span></span></div><ul class="post__meta post__tags d-inline-block"><li class="post__tag d-inline-block icon fa-hashtag"><a href="/blog/tags/experience.html">experience</a></li><li class="post__tag d-inline-block icon fa-hashtag"><a href="/blog/tags/reflection.html">reflection</a></li><li class="post__tag d-inline-block icon fa-hashtag"><a href="/blog/tags/clojure.html">clojure</a></li></ul></header><section class="post__content post__full"><p>You might be thinking, “No it’s not! It’s completing my not-yet-open-sourced AutomaticCrudAbstractionLayer UI to communicate with my upcoming patent for my FormAbstractionOnTopOfAFormLayer wrapper to dispatch EventNodes to my reducer service to deterministically update my store state. Then I’m going to produce a framework with it to build a platform and sell it a software-as-a-service product!” Perhaps in a way, that is an obstacle, but then let’s ask, “What gets in the way of me accomplishing that?” Some more more practical reasons may come up, but eventually we may realize a lot of those stem from what’s in the minds. Distractions, fears, wants, needs, anger, and especially more complex problems like indecisiveness and anxiety constantly get in the way of a person achieving their goals. One may not even notice how much such obstacles can get in their way on a nearly constant basis.</p>
-<p>The biggest issue engineers new and old wrestle with is ego. Ego can really mess a mind up by causing oneself and those around them a lot of pain. An uncontested, poorly researched theory of mine is that building software makes us feel like geniuses and without care, we start to believe it.</p>
-<p>When we get to that point we believe every line of code, thought, or criticism must be genius as well. I’m guilty of moments like that myself. Sometimes when discussing software dev with other programmers of other languages part of my brain foolishly screams, &ldquo;TELL THEM ABOUT CLOJURE CLOJURE IS AWESOME CLOJURE IS GREAT KEEEP THINGS SSSIIIMMMPLLEEE USE CllooJjjuurEEE&rdquo; over and over and over again. That is my ego. The truth is I prefer Clojure because it feels productive, and enjoyable to me. But others have tried it and moved on, some will never try it for various reasons, and others may find it simply doesn’t meet their needs or spark joy in them like it does for me.</p>
-<p>They’re not wrong; they’re not unenlightened. While it’s largely beneficial to learn different languages than what is familiar, that’s not something to force on others. I am not better than another because I’ve found a language I prefer over the conventional options; I’m not better because I did try to learn something different than what I’m used to. Time is expensive, I can’t be upset or look down on others because they want to spend it differently.</p>
-<p>Ego is not good for us because it stops us from growing. It wants to tell us we’re right no matter how much research may indicate otherwise. It tells us one stack and one way is the best way which is difficult to prove given that there are nearly infinite ways to accomplish anything in software engineering. It’s the CTO that refuses to listen to an intern because they’re an intern. Ego strikes when a team lead hinders critical discussion because it might make them look bad. It can be dangerously subtle if the ego subconsciously ignores advice that is not presented by an older, white-male authority figure. Ego needs to be the smartest person in the room. It’s when a contact tells us they’re excited about a new tool, framework, or language and ego drives one to immediately start Googling for why it sucks. It’s especially present when a developer carelessly ignore obligations and pursue perfection.</p>
-<p>One way to help maintain balance with ego is through meditation. Meditation will not make those issues go away, but through practice we learn to observe those feelings. As feelings come and go like a storm within the mind we carefully monitor them in an open, analytical but detached way, like reading the docs on a new programming language you’ve been meaning to learn.</p>
-<p>Checking ego does not mean avoiding skepticism or criticism. Those are necessary discussions to help everyone grow and to keep each other and work in balance. But there is a difference between insightful, healthy criticism that benefits everyone and the ego-driven criticism that pulls everyone around it down to justify an unearned position of superiority. Meditation does not destroy ego on its own, but it does help one take a step back from their thoughts and reactions to start questioning where they come from, observing them from afar instead of riding them like a roller-coaster of destruction.</p>
-<p>A challenging aspect towards this is understanding that while meditating one day, a practitioner does not become enlightened, and their ego is gone. Instead, quietly observing thoughts becomes a skill, the kind that degrades quickly if practice is not kept up. If you’re serious about giving it a shot, make it a routine. Make it a key part of your day and give it your full attention. <a href="https://youtu.be/oytL881p-nQ">It is not easy, but it is simple</a>. 😏</p>
-<p>Follow along next week as I discuss how practicing meditation can help us as software engineers keep egos in check and increase awareness of the mental obstacles that hinder personal progress. While I’m not anticpating transforming into a spiritual blog, I’ve acquired some practical experience to share to help people who are interested to get started.</p>
-</section></article></li><li class="posts__item"><article class="post "><header class="post__header"><a class="post__permalink not-mobile" href="/blog/contributing-to-open-source.html"><i class="fa fa-link"></i></a><div class="borders post__headline"><h1 class="post__title"><a class="post__link" href="/blog/contributing-to-open-source.html">My gentle introduction to hard-core open-source contribution</a></h1></div><div class="post__attrs"><time class="post__meta post__date-time" datetime="Mon Jun 24 02:16:42 UTC 2019"><span class="post__date icon fa-calendar-day">June 24, 2019</span><span class="post__time icon fa-clock">02:16 AM</span></time><span class="post__meta"><span class="post__ttr icon fa-stopwatch">7 min. read</span></span></div></header><section class="post__content post__summary">I had made my first major open-source contribution to a popular Clojure library. Learn from my experience and start contributing!</section></article></li><li class="posts__item"><article class="post "><header class="post__header"><a class="post__permalink not-mobile" href="/blog/5-announcing-cljs-tui-template.html"><i class="fa fa-link"></i></a><div class="borders post__headline"><h1 class="post__title"><a class="post__link" href="/blog/5-announcing-cljs-tui-template.html">Announcing my Leiningen ClojureScript Terminal-User-Interface Application Template &#x1f389;</a></h1></div><div class="post__attrs"><time class="post__meta post__date-time" datetime="Sun Feb 24 23:30:00 UTC 2019"><span class="post__date icon fa-calendar-day">February 24, 2019</span><span class="post__time icon fa-clock">11:30 PM</span></time><span class="post__meta"><span class="post__ttr icon fa-stopwatch">13 min. read</span></span></div></header><section class="post__content post__summary">Create ClojureScript TUI applications using web technologies you already know</section></article></li></ul><div class="pagination"><a class="pagination__link" href="/blog/page-1.html">View Older Posts<i class="fa fa-long-arrow-alt-right ml-1"></i></a></div></div></div></div><aside class="sidebar"><div class="sidebar__margin"></div><div class="sidebar__inner"><section class="profile text-center not-mobile"><h1 class="profile__title"><a href="/"><img alt="Eccentric J&apos;s Logo" class="profile__logo" src="/img/eccentric-j-logo.svg">Eccentric J</a></h1><ul class="profile__trades"><li class="profile__trade">Engineer</li><li class="profile__trade">Designer</li><li class="profile__trade">Artist</li></ul><blockquote class="profile__quote">Idle parentheses form the devil's playlists.</blockquote></section><section class="navbar"><nav class="navbar__nav"><div class="not-mobile"><i class="drip bg-slate" style="right:0.3125rem;top:0.0rem;max-height:1.875rem;width:0.3125rem;height:0.3125rem;"></i><i class="drip bg-slate" style="right:0.75rem;top:0.0rem;max-height:3.0rem;width:0.1875rem;height:0.5rem;"></i><i class="drip bg-slate" style="right:1.25rem;top:0.0rem;max-height:3.75rem;width:0.5rem;height:0.25rem;"></i></div><ul class="navbar__list"><li class="navbar__item navbar__active"><a href="/">idle-parens<span class="navbar__label">(blog)</span></a></li><li class="navbar__item "><a href="/projects.html">active-parens<span class="navbar__label">(projects)</span></a></li><li class="navbar__item "><a href="/about.html">meta<span class="navbar__label">(about)</span></a></li></ul></nav></section><ul class="media-links d-flex flex-row justify-content-between"><li class="media-links__item"><a class="icon fa-rss " href="/feed.rss"><span class="media-links__label">RSS</span></a></li><li class="media-links__item"><a class="icon fa-rss-square " href="/atom.xml"><span class="media-links__label">Atom</span></a></li><li class="media-links__item"><a class="brand fa-github-square" href="https://github.com/eccentric-j"><span class="media-links__label">Github</span></a></li><li class="media-links__item"><a class="icon fa-envelope" href="mailto:jayzawrotny@gmail.com"><span class="media-links__label">Email</span></a></li></ul></div></aside></div></div><script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script><script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/clojure.min.js"></script><script src="/js/eccentric-app.js"></script><script>hljs.initHighlightingOnLoad();</script></body></html>
+<html itemtype="http://schema.org/Blog" lang="en"><head><title>Eccentric J</title><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport"><meta content="/img/eccentric-j-social.png" property="og:image"><meta content="279" property="og:image:width"><meta content="279" property="og:image:height"><meta content="#68F3CB" name="msapplication-TileColor"><meta content="/ms-icon-144x144.png" name="msapplication-TileImage"><meta content="#68F3CB" name="theme-color"><meta content="Eccentric J" property="og:title"><meta content="Eccentric J’s blog on functional programming and software engineering." property="og:description"><meta content="https://eccentric-j.com/" property="og:url"><link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"><link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"><link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"><link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"><link href="/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"><link href="/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"><link href="/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"><link href="/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"><link href="/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"><link href="/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png"><link href="/android-icon-32x32.png" rel="icon" sizes="32x32" type="image/png"><link href="/android-icon-96x96.png" rel="icon" sizes="96x96" type="image/png"><link href="/android-icon-16x16.png" rel="icon" sizes="16x16" type="image/png"><link href="/manifest.json" rel="manifest"><link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"><link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"><link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"><link href="/site.webmanifest" rel="manifest"><link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"><link href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"><link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css" rel="stylesheet"><link href="//fonts.googleapis.com/css?family=Seaweed+Script|Anonymous+Pro|Source+Sans+Pro" rel="stylesheet"><link href="/css/style.css" rel="stylesheet"><link href="/css/mobile.css" media="screen and (max-width: 929px)" rel="stylesheet"><link href="/css/tablet.css" media="screen and (min-width: 768px) and (max-width: 929px)" rel="stylesheet"><link href="/css/desktop.css" media="screen and (min-width: 930px)" rel="stylesheet"></head><body><div class="page"><i class="drip bg-teal" style="right:1.875rem;width:0.625rem;height:0.625rem;"></i><i class="drip bg-teal" style="right:3.5rem;width:0.5rem;height:0.5rem;"></i><i class="drip bg-teal" style="right:2.625rem;width:0.3125rem;height:0.625rem;"></i><div class="layout"><div class="main"><header class="page__header"><h1 class="page__title"><span class="page__path">idle-parens</span><span class="page__sep">/</span><span class="page__path">blog</span></h1></header><div class="content"><div class="blog"><ul class="posts"><li class="posts__item"><article class="post full"><header class="post__header"><a class="post__permalink not-mobile" href="/blog/clojure-like-its-php.html"><i class="fa fa-link"></i></a><div class="borders post__headline"><h1 class="post__title"><a class="post__link" href="/blog/clojure-like-its-php.html">Clojure like it's PHP: Use Clojure on Shared Web Hosts</a></h1><div class="drips"><i class="drip bg-slate" style="right:1.5rem;top:100%;max-height:3.75rem;width:0.3125rem;height:0.3125rem;"></i><i class="drip bg-slate" style="right:1.1875rem;top:100%;max-height:3.125rem;width:0.1875rem;height:0.5rem;"></i><i class="drip bg-slate" style="right:0.625rem;top:100%;max-height:2.5rem;width:0.5rem;height:0.5rem;"></i></div></div><div class="post__attrs"><time class="post__meta post__date-time" datetime="Wed Feb 10 00:00:00 UTC 2021"><span class="post__date icon fa-calendar-day">February 10, 2021</span><span class="post__time icon fa-clock">12:00 AM</span></time><span class="post__meta"><span class="post__ttr icon fa-stopwatch">29 min. read</span><span class="post__author icon fa-user"><a href="https://eccentric-j.com" target="_blank">Eccentric J</a></span></span></div><ul class="post__meta post__tags d-inline-block"><li class="post__tag d-inline-block icon fa-hashtag"><a href="/blog/tags/experiment.html">experiment</a></li><li class="post__tag d-inline-block icon fa-hashtag"><a href="/blog/tags/web.html">web</a></li><li class="post__tag d-inline-block icon fa-hashtag"><a href="/blog/tags/clojure.html">clojure</a></li></ul></header><section class="post__content post__full"><p>A few days back in the Doom Emacs Discord, I daydreamed about a Clojure implementation that compiles to PHP. I felt nostalgic for the days of writing code and uploading it to the server well before containerization, continuous integration, and complex build scripts became the norm. Clojure, much like working with Ruby or Python, are slightly different beasts that require more powerful hosting capabilities and runtimes to support web apps. Deploying and running those web servers cost more time, money, and often both. Thankfully, Taco and Rushsteve responded and pointed out that Clojure could serve requests as a cgi-bin script running through Babashka. Sounding almost too good to be true, I had to give this a shot!</p>
+<h2><a href="#its-alive" id="its-alive"></a>It&rsquo;s Alive!</h2>
+<p>After a bit of trial and error plus some help from Didibus in the Clojurians&rsquo; Slack, I got a cgi-script running a Clojure file through Babashka! A few refinements and a sample db later: <a href="https://cgi.eccentric-j.com/metal.clj">https://cgi.eccentric-j.com/metal.clj</a>. This article breaks down the process to share what I learned and answer some predicted questions you may have.</p>
+<blockquote class="disclaimer">
+<p><strong>Disclaimer</strong>: The credit for this idea goes to Taco (<a href="https://elais.codes/">Elais Player</a>) and <a href="https://rushsteve1.us">rushsteve1</a> from the Doom Emacs Discord. Also big thanks to Borkdude (<a href="https://michielborkent.nl">Michiel Borkent</a>) for creating <a href="https://github.com/babashka/babashka">Babashka</a> and providing support. Also thanks to <a href="https://www.rubberducking.com/">Didibus</a> of the Clojurians&rsquo; Slack for helping me figure out how to run my first test Clojure cgi script.</p>
+</blockquote>
+<h2><a href="#in-a-nutshell" id="in-a-nutshell"></a>In a Nutshell</h2>
+<p>In general the setup is as follows:</p>
+<ol>
+<li>User visits example.com/cgi-bin/demo.clj</li>
+<li>The webserver (typically Apache) runs the demo.clj file</li>
+<li>demo.clj runs through the Babashka binary</li>
+<li>Headers and HTML printed to stdout form the response to the browser</li>
+</ol>
+<p><img src="/img/blog/7-clj-cgi-flow.jpg" alt="Flow Diagram of Using Clojure with Babashka for CGI-bin script requests on a shared web server" /></p>
+<h2><a href="#why-not-just-use-php-on-shared-servers" id="why-not-just-use-php-on-shared-servers"></a>Why not just use PHP on shared servers?</h2>
+<p>I would love to come at this with a perfectly logical and objective reason why Clojure is ultimately a better choice on shared hosts via CGI-script, but I can&rsquo;t. What I can tell you is that I enjoy working with Clojure a lot more than PHP currently. I also feel Clojure third-party code is pretty consistent in style and design where as PHP has almost unlimited paradigms and styles to choose from resulting in wildly contrasting code. Another bonus is that as of <a href="https://github.com/babashka/babashka/blob/master/CHANGELOG.md#v028">Babashka 0.2.8</a>, which came out the day I gave this a shot, it now includes hiccup which makes crafting HTML feel like a velvety butter dream wrapped in brackets.</p>
+<p>That said, this is still pretty experimental so it may take some more learning before this becomes viable for a production-grade project, but I do think as-is it offers a great opportunity to hack together useful web resources using Clojure.</p>
+<h2><a href="#what-are-we-going-to-build" id="what-are-we-going-to-build"></a>What are we going to build?</h2>
+<p>This guide explains how to build a basic page that fetches bands sorted by rank. Because I lack both taste and maturity, I&rsquo;ve chosen a sample of some of my favorite metal bands. It should be pretty self explanatory to customize it to your liking if you find even the references unpalatable.</p>
+<p>The purpose of this simple project is to demonstrate querying a database, installing pods, using shared libraries, and creating a properly formatted CGI-bin response to return to browsers.</p>
+<p><a href="https://cgi.eccentric-j.com/metal.clj"><img src="/img/blog/6-clj-cgi-example.jpg" alt="Screenshot of the Example Project this Guide Details" /></a></p>
+<p><a href="https://cgi.eccentric-j.com/metal.clj">https://cgi.eccentric-j.com/metal.clj</a> [<a href="https://github.com/eccentric-j/clj-cgi-example">Source on Github</a>]</p>
+<h2><a href="#requirements" id="requirements"></a>Requirements</h2>
+<ol>
+<li>A host that supports cgi-scripts</li>
+<li>The Babashka static binary</li>
+<li>The Babashka PostgreSQL pod static binary</li>
+<li>Working with Libaries</li>
+<li>Create a postgres database and example table</li>
+<li>A Clojure script to return an HTML response</li>
+</ol>
+<h3><a href="#directory-structure" id="directory-structure"></a>Directory Structure</h3>
+<pre><code>~/public_html/clojure-web-examples
+|
+| lib/
+| | honeysql.jar
+| | gaka.jar
+|
+| metal/
+| | core.clj
+| | style.clj
+|
+| metal.clj
+| prod.secrets.edn
+</code></pre>
+<h3><a href="#hosting" id="hosting"></a>Hosting</h3>
+<p>Shared hosts are often the cheapest hosts with a large quantity of resources. With a single account you can host multiple sites and databases. All that&rsquo;s required is finding a shared web-host that offers custom cgi-scripts and perhaps PostgreSQL to follow along with this guide. A Virtual-Private-Server (VPS) could work as well but may take more configuration and more care towards security.</p>
+<p>I am using <a href="https://bluehost.com">https://bluehost.com</a>, that said I got the account 3 years ago in 2018 so be sure the shared hosting service you select does support cgi-scripts as offerings may change over time.</p>
+<h4><a href="#apache-handlers" id="apache-handlers"></a>Apache Handlers</h4>
+<p>Depending on the shared host chosen, you may have the option of configuring Apache Handlers. When configured, requesting a .clj file runs it as a cgi-script. If this option is not available, you will likely have to place your entry script in your <code>cgi-bin</code> directory. If using Bluehost, look for cPanel &gt; Advanced &gt; Apache Handlers.</p>
+<p>Alternatively you can create a .htaccess file like the following in your site&rsquo;s directory:</p>
+<pre><code>AddHandler cgi-script .clj
+</code></pre>
+<h3><a href="#download-install-babashka-static-binary" id="download-install-babashka-static-binary"></a>Download &amp; Install Babashka Static Binary</h3>
+<p><a href="https://github.com/babashka/babashka">Babashka</a>, created by Borkdude (Michiel Borkent), is the binary to run Clojure files as a script. For example, <code>bb -f fetch-contacts.clj</code>. The Babashka binary contains the Clojure Java core library, Borkdude’s <a href="https://github.com/borkdude/sci">sci</a> (Small Clojure Interpreter) library, a CLI, and some common, convenient third-party libraries all compiled into a native binary using <a href="https://www.graalvm.org/">Graal VM</a>. This allows Babashka to run a Clojure file fresh in &lt; 10ms which is perfect for our webserver scripting purposes!</p>
+<ol>
+<li>Visit the releases page <a href="https://github.com/babashka/babashka/releases">https://github.com/babashka/babashka/releases</a></li>
+<li>Download the static linux zip or whichever one that closely matches your shared hosting service. At the time of writing, I downloaded <code>babashka-0.2.8-linux-static-amd64.zip</code>.</li>
+<li>Once downloaded, extract it on your local computer</li>
+<li>Upload the bb binary somewhere like <code>~/bin/bb</code> on your shared host.</li>
+</ol>
+<p>It&rsquo;s a good idea to keep the binary directly out of reach of your public_html folder so attackers can&rsquo;t remotely run code against it. Make sure the permissions are <code>755</code> so that it can execute from public web requests. Test it by running <code>bb</code> in a remote shell, if you get the Babashka Clojure REPL it works! If not check your PATH environment variable or try using an absolute path.</p>
+<h3><a href="#download-install-babashka-postgresql-pod" id="download-install-babashka-postgresql-pod"></a>Download &amp; Install Babashka PostgreSQL Pod</h3>
+<p>This sample project connects to a Postgres database to fetch the ranked bands. The common Java Database Connection (JDBC) library does not support Babashka out of the box due to its dependency on the Java Virtual Machine (JVM) runtime. Fortunately, Babashka offers pods which allow programs written in different languages to communicate with Babashka scripts. When using Babashka on your local machine for instance, the pods API automatically downloads and loads the target pod. On my shared host, that functionality did not work as it was downloading and building binaries that depended on specific build tools on the server. To solve this, download the static binary of the pod and upload it to the server.</p>
+<p>This step is similar to installing Babashka.</p>
+<ol>
+<li>Visit <a href="https://github.com/babashka/babashka-sql-pods/releases">https://github.com/babashka/babashka-sql-pods/releases</a></li>
+<li>Download the latest <code>pod-babashka-postgresql-x.y.z-linux-static-amd64.zip</code></li>
+<li>Extract the zip on your local machine</li>
+<li>Upload the binary to the lib directory we are going to use like <code>~/lib/pod-babashka-postgresl</code>.</li>
+</ol>
+<p>Ensure it has <code>755</code> permissions so it runs publicly through the cgi-script.</p>
+<h3><a href="#create-a-postgres-database-with-an-example-table" id="create-a-postgres-database-with-an-example-table"></a>Create a postgres database with an example table</h3>
+<p>This article presumes your shared host is offering PostgreSQL databases and that you&rsquo;re familiar with creating them through cPanel. Consult your shared hosts documentation for instructions. If your shared host does not offer PG databases, you may be able to use a different pod.</p>
+<p>After setting up your database, run the following SQL query:</p>
+<pre><code class="language-sql">SET client_encoding = 'UTF8';
+
+CREATE TABLE metal_bands (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    genre character varying(100) NOT NULL,
+    popularity integer,
+    rank integer NOT NULL,
+    recommended_album character varying(255),
+    music_video text,
+    comment text
+);
+
+COMMENT ON COLUMN metal_bands.popularity IS 'Out of 5';
+
+CREATE SEQUENCE metal_bands_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+ALTER SEQUENCE metal_bands_id_seq OWNED BY metal_bands.id;
+
+SELECT pg_catalog.setval('metal_bands_id_seq', 9, true);
+
+ALTER TABLE ONLY metal_bands ALTER COLUMN id SET DEFAULT nextval('metal_bands_id_seq'::regclass);
+
+INSERT INTO metal_bands VALUES (1, 'Slipknot', 'nu-metal', 5, 1, 'Slipknot (1999)', 'https://www.youtube.com/watch?v=ZPUZwriSX4M', 'Much angsty and yet much iconic');
+INSERT INTO metal_bands VALUES (8, 'Soilwork', 'melodic-death-metal', 3, 4, 'The Ride Majestic (2015)', 'https://www.youtube.com/watch?v=kme-sxY2pAQ', 'A departure from their previous sound but builds on their strengths with catchy cleans accented by heavy moments');
+INSERT INTO metal_bands VALUES (4, 'Mastodon', 'progressive', 4, 9, 'Leviathan (2004)', 'https://www.youtube.com/watch?v=labytsb3gfI', 'Catchy hooks, dynamic melodies, energetic vocals accompanied by consistent concepts to their albums');
+INSERT INTO metal_bands VALUES (2, 'Converge', 'post-hardcore', 3, 6, 'All We Love We Leave Behind (2012)', 'https://www.youtube.com/watch?v=CrcY9I-BbjM', 'Unique band with hardcore and punk roots');
+INSERT INTO metal_bands VALUES (6, 'Lifelover', 'suicidal-depressive-black-metal', 1, 2, 'Dekadens (2009)', 'https://www.youtube.com/watch?v=uhqofz6xPCc', 'A hauntingly tragic sound that adds some lofi energy to the typical 11/10 black metal genre.');
+INSERT INTO metal_bands VALUES (3, 'Igorrr', 'avant-garde/experimental', 2, 7, 'Hallelujah (2012)', 'https://www.youtube.com/watch?v=rEuMAqfuCrI', 'Combines sampling, classical music, and EDM into chaotic but beautiful compositions');
+INSERT INTO metal_bands VALUES (7, 'Devil Master', 'black-metal/rock', 1, 8, 'Satan Spits on Children of Light (2019)', 'https://www.youtube.com/watch?v=bWIrLDKY_Ew', 'A very high-energy fusion of black metal, punk, and rock');
+INSERT INTO metal_bands VALUES (9, 'Shade Empire', 'symphonic-black-metal', 2, 5, 'Omega Arcane (2013)', 'https://www.youtube.com/watch?v=rBqaWfnCRZE', 'Story driven black metal mixed with some striking symphonic elements creating a very beautiful and heavy wave of sound');
+INSERT INTO metal_bands VALUES (5, 'Antigama', 'mathgrind', 2, 3, 'The Insolent (2016)', 'https://www.youtube.com/watch?v=-Qt4UwwbIZs', 'Quite possibly the most abrasive band on this list, it''s not meant to be comfortable you endure it and feel fortunate to have made it through');
+
+ALTER TABLE ONLY metal_bands
+    ADD CONSTRAINT metal_bands_pkey PRIMARY KEY (id);
+</code></pre>
+<p>Ensure the user you created has at least read access to the table. If managed through cPanel it&rsquo;s easy to miss that. After you create a user, add it to the db.</p>
+<h2><a href="#working-with-libraries" id="working-with-libraries"></a>Working with Libraries</h2>
+<p>To develop more sophisticated scripts, thare are plenty of mature libraries available in the Clojure ecosystem to leverage. To use them with the web scripts, there are three routes to choose from.</p>
+<p>A good number of Clojure libraries are compatible with Babashka available for use. Consult to see the known list of compatible libraries:</p>
+<p><a href="https://github.com/babashka/babashka/blob/master/doc/projects.md">https://github.com/babashka/babashka/blob/master/doc/projects.md</a></p>
+<h3><a href="#uberjar-all-deps" id="uberjar-all-deps"></a>Uberjar all deps</h3>
+<p>This method creates a single jar that contains all the project libraries from a deps.edn file.</p>
+<p>Babashka and the Clojure CLIs can install deps and create an uberjar from a deps.edn</p>
+<pre><code class="language-bash">bb -cp $(clojure -Awithout-clojure -Spath) --uberjar project-libs.jar
+</code></pre>
+<p>If you are on Windows you can use replace the calls to Clojure to the Clojure CLIs built into Babashka.</p>
+<pre><code class="language-bash">bb -cp $(bb --clojure -Awithout-clojure -Spath) --uberjar project-libs.jar
+</code></pre>
+<p>The <code>-Awithout-clojure</code> is using an alias from deps.edn that removes Clojure core from the jar, this is an optimization because Babashka already provides the Clojure core itself.</p>
+<h4><a href="#pros" id="pros"></a>Pros</h4>
+<p>If multiple libraries share dependencies, the uberjar will factor out the common dependencies.</p>
+<h4><a href="#cons" id="cons"></a>Cons</h4>
+<p>If you anticipate having multiple Clojure web scripts on a shared host, an uberjar for each project will consume more storage.</p>
+<h3><a href="#uberjar-individual-libraries" id="uberjar-individual-libraries"></a>Uberjar individual libraries</h3>
+<p>Use Babashka&rsquo;s uberjar functionality to create separate jars for each library. This allows you to share it in a <code>lib</code> folder outside of your project directory and reuse them across multiple projects in a shared hosting account. This is the method this guide will walk through it in the next section.</p>
+<h4><a href="#pros" id="pros"></a>Pros</h4>
+<p>Reuse libraries across projects by creating individual jars for each one.</p>
+<h4><a href="#cons" id="cons"></a>Cons</h4>
+<p>If those libraries have dependencies, and they share the same dependencies, then the jars will contain duplicated code which may affect performance and storage.</p>
+<h4><a href="#why-did-i-choose-this-option" id="why-did-i-choose-this-option"></a>Why did I choose this option?</h4>
+<p>Libraries like Honeysql, Hiccup, and Gaka, do not have any dependencies beyond Clojure which we will remove from the uberjar since that comes with Babashka. Since I want to continue making experiments I felt having those libraries readily available would speed up the process and be the most flexible.</p>
+<h3><a href="#uberscript-the-entire-application" id="uberscript-the-entire-application"></a>Uberscript the entire application</h3>
+<p>To optimize performance, Babashka can bundle libraries and the web scripts together by reading through the <code>require</code> calls. Additionally, <a href="https://github.com/borkdude/carve">carve</a> can trim away the unused code resulting in smaller bundle sizes which should result in faster performance when requesting the script from the browser.</p>
+<p>Modify the command below to create an uberscript for your project. Note that we will be modifying the classpath dynamically in our main request script so you will need to take that into account when supplying the classpath string to <code>bb</code>.</p>
+<pre><code class="language-bash">bb --classpath &quot;your-lib1.jar:yourlib2.jar:src&quot; --main foo --uberscript uber.clj
+</code></pre>
+<p>See <a href="https://book.babashka.org/#_uberscript">https://book.babashka.org/#_uberscript</a> to learn more about this process.</p>
+<h4><a href="#pros" id="pros"></a>Pros</h4>
+<p>Smallest bundle size resulting in faster performance</p>
+<h4><a href="#cons" id="cons"></a>Cons</h4>
+<p>Requires a more complex build process: generate an uberscript, then carve out unused code on every change to the web scripts. Web scripts will not be individually available on the server so devs can&rsquo;t ssh in and test individual script files or make on-the-fly changes. They will need access to the source and run those build steps.</p>
+<h3><a href="#creating-an-uberjar-for-honeysql" id="creating-an-uberjar-for-honeysql"></a>Creating an uberjar for Honeysql</h3>
+<p>To query the bands from the db, we could write a raw SQL query string but where is the fun in that? Clojure offers HoneySQL, a library for writing SQL queries as structured data. If using our own VM, local computer, or VPS, we could use a tool like <code>clj</code> and <code>deps.edn</code> to automatically download and install the libraries we need. Depending on your shared host, that&rsquo;s not going to work. Fear not though for all is not lost! We can specify libraries in a local deps.edn and use Clojure&rsquo;s <code>clj</code> CLI with Babashka to create an uberjar.</p>
+<ol>
+<li>
+<p>Create a <code>deps.edn</code> similar to the following:</p>
+<pre><code class="language-clojure">{:paths []
+:deps {honeysql/honeysql {:mvn/version &quot;1.0.444&quot;}}
+:aliases {:remove-clojure {:classpath-overrides {src nil
+                                                org.clojure/clojure nil
+                                                org.clojure/spec.alpha nil
+                                                org.clojure/core.specs.alpha nil}}}}
+</code></pre>
+<p>The <code>clojure</code> CLI can read this file and download the libraries we want to work with. The alias is important so that Babashka can filter out redundant libraries to include in the uberjar.</p>
+</li>
+<li>
+<p>Run this Babashka command to create an uberjar:</p>
+<pre><code class="language-bash">bb -cp $(clojure -Aremove-clojure -Spath) --uberjar honeysql.jar
+</code></pre>
+</li>
+<li>
+<p>Upload this file to your lib directory as suggested when uploading the PostgreSQL pod such as <code>~/lib/honeysql.jar</code>.</p>
+</li>
+</ol>
+<p>We are going to add files from that folder to Babashka&rsquo;s classpaths. This approach creates a shared folder of libraries and pods multiple projects can use. If you would prefer to keep libraries separate you could create an uberjar with all your code and libraries bundled together. I intend on making multiple projects with this technique so I&rsquo;m going with the shared lib directory and creating individual jars for now.</p>
+<p>To make this process simpler I&rsquo;ve drafted a script called &ldquo;depjar&rdquo; that uses Babashka to create individual jars from deps.edn:</p>
+<p><a href="https://github.com/eccentric-j/clj-cgi-example/tree/main/depjar">https://github.com/eccentric-j/clj-cgi-example/tree/main/depjar</a></p>
+<p>You can use it by running:</p>
+<pre><code class="language-bash">clj-cgi-example/depjar/depjar.clj ./deps.edn
+</code></pre>
+<p>To process your deps.edn and create jars for each dependency.</p>
+<h2><a href="#the-clojure-files" id="the-clojure-files"></a>The Clojure Files</h2>
+<p>The first script configures our project environment, imports our code, and prints headers and the HTML body. This file may accessed directly from a browser.</p>
+<p>I have named this file <code>metal.clj</code>.</p>
+<pre><code class="language-clojure">#!/bin/env /home1/&lt;username&gt;/bin/bb                   ;; (1)
+
+(ns cgi.metal
+  (:require
+   [babashka.classpath :refer [add-classpath]]
+   [babashka.pods :as pods]
+   [clojure.java.shell :refer [sh]]
+   [clojure.string :as s]
+   [hiccup2.core :refer [html]]))
+
+;; Dynamic Libs
+(def LIB-PATH &quot;/home1/&lt;username&gt;/lib/&quot;)
+(def CWD (or (System/getenv &quot;DOCUMENT_ROOT&quot;) (System/getenv &quot;PWD&quot;)))
+
+(defn lib
+  &quot;
+  Create an absolute path to a jar file in sibling lib directory
+  Takes a string filename like \&quot;honeysql.jar\&quot;
+  Returns a string like \&quot;/path/to/dir/lib/honeysql.jar\&quot;.
+  &quot;
+  [path]
+  (str LIB-PATH path))
+
+;; Add jars and current directory to classpath to import library code
+
+(add-classpath (s/join &quot;:&quot; [CWD                       ;; (2)
+                            (lib &quot;gaka.jar&quot;)
+                            (lib &quot;honeysql.jar&quot;)]))
+(pods/load-pod (lib &quot;pod-babashka-postgres&quot;))
+
+;; Require our main page code
+;; Must come after updating the class path
+
+(require
+ '[metal.core :as metal])                             ;; (3)
+
+;; CGI scripts must print headers then body
+
+(println &quot;Content-type:text/html\r\n&quot;)                ;; (4)
+(println (str (html metal/content)))                  ;; (5)
+
+(System/exit 0)
+</code></pre>
+<ol>
+<li>Be sure to replace <code>&lt;username&gt;</code> with your shared hosting username. Run <code>pwd</code> or <code>whoami</code> in a terminal if available for quick reference.</li>
+<li>Add paths to the library jars we wish to use that we uploaded to the <code>lib</code> directory outside of <code>public_html</code>. Replace <code>&lt;username&gt;</code> with your actual username from step 1.</li>
+<li>With the classpaths updated, import the adjacent source files for our app logic.</li>
+<li>CGI scripts must print the headers before the body response. If it&rsquo;s not formatted correctly visiting the page will render a 500 server error response.</li>
+</ol>
+<p>Now lets create a source file that actually renders some content! For this project I&rsquo;ve named it <code>metal/core.clj</code> because it&rsquo;s both a common Clojure idiom, and a sub-genre of metal music.</p>
+<pre><code class="language-clojure">(ns metal.core
+  (:require
+   [clojure.string :as s]
+   [hiccup.util :refer [raw-string]]
+   [honeysql.core :as sql]
+   [pod.babashka.postgresql :as pg]
+   [gaka.core :refer [css]]
+   [metal.style :refer [rems]]))
+
+;; Load secrets for the db
+(def secrets (read-string (slurp &quot;prod.secret.edn&quot;)))
+
+;; Connect to the database
+(def db {:dbtype   &quot;postgresql&quot;
+         :host     &quot;localhost&quot;
+         :dbname   (:db/name secrets)
+         :user     (:db/user secrets)
+         :password (:db/password secrets)
+         :port     5432})
+
+;; Fetch bands from the database
+(def bands (pg/execute! db (sql/format {:select [:*]
+                                        :from [:metal_bands]
+                                        :order-by [[:rank :desc]]})))
+
+(defn embed-url
+  &quot;Transforms a public youtube URL to the embedded URL&quot;
+  [yt-url]
+  (as-&gt; yt-url $
+    (s/split $ #&quot;=&quot;)
+    (drop 1 $)
+    (s/join &quot;&quot; $)
+    (str &quot;https://youtube.com/embed/&quot; $)))
+
+(defn popularity
+  [pop-rank]
+  (str (s/join &quot;&quot; (repeat pop-rank &quot;★&quot;))
+       (s/join &quot;&quot; (repeat (- 5 pop-rank) &quot;☆&quot;))))
+
+(def style
+  (css
+      [:body
+       {:padding 0
+        :margin 0
+        :font-family :sans-serif
+        :background-color &quot;#E5E5E5&quot;}]
+      [:h1
+       {:font-size (rems 32)}]
+      [:h2
+       {:font-size (rems 24)
+        :font-family &quot;\&quot;Metal Mania\&quot;, sans-serif&quot;}]
+      [:h3
+       {:font-size (rems 20)}]
+      [:h4
+       {:font-size (rems 18)}]
+      [:.example
+       {:padding &quot;2rem&quot;
+        :text-align :center
+        :margin-bottom &quot;4rem&quot;}]
+      [:.cards
+       {:list-style &quot;none&quot;
+        :display &quot;flex&quot;
+        :flex-flow &quot;row wrap&quot;
+        :align-items &quot;stretch&quot;
+        :justify-content &quot;space-evenly&quot;
+        :margin &quot;0 auto&quot;
+        :padding &quot;0&quot;
+        :max-width &quot;1100px&quot;}]
+      [:.cards__item
+       {:background-color &quot;#FFF&quot;
+        :flex &quot;0 0 320px&quot;
+        :box-sizing &quot;border-box&quot;
+        :position &quot;relative&quot;
+        :margin &quot;1rem&quot;
+        :box-shadow &quot;0 0 10px 0 rgba(0, 0, 0, 0.2)&quot;}]
+      [:.card
+       {:box-sizing :border-box
+        :width &quot;320px&quot;
+        :display &quot;block&quot;
+        :position :relative
+        :text-align :left
+        :border-bottom-left-radius &quot;5px&quot;
+        :border-bottom-right-radius &quot;5px&quot;}]
+      [:.rank
+       {:position :absolute
+        :right &quot;-16px&quot;
+        :top &quot;-16px&quot;
+        :z-index 100
+        :border-radius &quot;50%&quot;
+        :width &quot;32px&quot;
+        :height &quot;32px&quot;
+        :background &quot;#fff&quot;
+        :line-height &quot;32px&quot;
+        :text-align :center
+        :font-size (rems 14)
+        :font-style :italic
+        :color &quot;#666&quot;}]
+      [:.card__body
+       {:padding &quot;1rem&quot;}]
+      [:.detail
+       {:margin-bottom &quot;1rem&quot;}]
+      [:.label
+       {:display &quot;block&quot;
+        :font-weight &quot;bold&quot;}]
+      [:.comment
+       {:font-size (rems 14)
+        :line-height 1.4}]))
+
+(def example
+  [:section.example
+   [:h1 &quot;Running Clojure as a CGI-bin Script Example&quot;]
+   [:h2 &quot;Example Project&quot;]
+   [:p &quot;A Metal Subgenre Sample Platter&quot;]
+   [:ul.cards
+    (for [band bands]
+      [:li.cards__item
+       [:div.card
+        [:span.rank
+         (inc (- (count bands) (:metal_bands/rank band)))]
+        [:iframe
+         {:width &quot;320&quot;
+          :height &quot;180&quot;
+          :src (embed-url (:metal_bands/music_video band))
+          :frameborder &quot;0&quot;
+          :allow &quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
+          :allowfullscreen true}]
+        [:div.card__body
+         [:h3 (:metal_bands/name band)]
+         [:div.detail
+          [:span.label &quot;Genre&quot;]
+          [:span (:metal_bands/genre band)]]
+         [:div.detail
+          [:span.label &quot;Popularity&quot;]
+          [:span (popularity (:metal_bands/popularity band))]]
+         [:div.detail
+          [:span.label &quot;Recommended Album&quot;]
+          [:span
+           {:style {:font-style &quot;italic&quot;}}
+           (:metal_bands/recommended_album band)]]
+         [:p.comment
+          (:metal_bands/comment band)]]]])]])
+
+(def content
+  [:html
+   [:head
+    [:title &quot;Live Clojure CGI Script Example&quot;]
+    [:meta {:charset &quot;UTF-8&quot;}]
+    [:link {:rel &quot;preconnect&quot;
+            :href &quot;https://fonts.gstatic.com&quot;}]
+    [:link {:rel &quot;stylesheet&quot;
+            :href &quot;https://fonts.googleapis.com/css2?family=Metal+Mania&amp;family=Sriracha&amp;display=swap&quot;}]
+    [:link {:rel &quot;stylesheet&quot;
+            :href &quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atelier-cave-dark.min.css&quot;}]
+    [:style (raw-string style)]]]
+   [:body
+    [:div#page
+     example]
+    [:script {:src &quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js&quot;}]
+    [:script {:src &quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/clojure.min.js&quot;}]
+    [:script &quot;hljs.initHighlightingOnLoad();&quot;]]])```
+
+Lastly, lets create a `metal/style.clj` with a rems helper function.
+
+```clojure
+(ns metal.style)
+
+(defn rems
+  [px]
+  (str (float (/ px 16)) &quot;rem&quot;))
+</code></pre>
+<h2><a href="#testing-debugging" id="testing-debugging"></a>Testing &amp; Debugging</h2>
+<p>When everything works, it just works. Visit the <code>https://yourhost.tld/metal.clj</code> script and the page should render. If there is even a slight error you are likely going to get a generic 500 error response. Your host might be logging these around your home folder, or you may find a logging page in the hosting cPanel. This will be your first goto to figuring out what went wrong. The most common error you will likely run into is not setting the permission of your public Clojure scripts to <code>755</code>. Fix that by running a bash command like <code>chmod +x metal.clj</code> on the server.</p>
+<p>If logging is not revealing the problem, another way to go about debugging is to run the script through the shell on your host. Simply ssh into your host and run <code>./metal.clj</code>. It should output the desired HTML response. This will produce much more helpful output if a runtime error occurs. Be aware though that different environment variables change depending on if the script is running through the cgi-bin from the browser request or locally from a terminal.</p>
+<p>If you recall, we are setting the CWD conditionally:</p>
+<pre><code class="language-clojure">(def CWD (or (System/getenv &quot;DOCUMENT_ROOT&quot;) (System/getenv &quot;PWD&quot;)))
+</code></pre>
+<p>The script supports running it as a cgi-script and locally within a shell.</p>
+<h2><a href="#tradeoffs" id="tradeoffs"></a>Tradeoffs</h2>
+<ul>
+<li>Installing other libraries is not as streamlined as with the JVM or ClojureScript, you will likely need to manually uberjar and upload them.</li>
+<li>Some JVM specific libraries may not work with Babashka which then requires pods to provide separate CLIs Babashka can communicate with.</li>
+<li>This is not the most performant option in the world, it&rsquo;s pretty quick, especially compared to typical JVM startup times but there are few more layers in play here, but about the same as a typical PHP setup. Additionally shared hosting is not the fastest route anyway.</li>
+</ul>
+<h2><a href="#predicted-questions-and-answers" id="predicted-questions-and-answers"></a>Predicted Questions and Answers</h2>
+<h3><a href="#do-i-have-to-use-the-full-path-to-the-bb-binary-in-the-shebang" id="do-i-have-to-use-the-full-path-to-the-bb-binary-in-the-shebang"></a>Do I have to use the full path to the bb binary in the shebang?</h3>
+<p>Yes. When running the script through the cgi it is not running through a shell user&rsquo;s profile which has the PATH configured to access the <code>bb</code> binary. There may be a way to make the entrypoint script generic though. While I chose to use the Clojure file as the page a user can access from the web, you could instead write a generic babashka or bash script that calculates paths from the current directory, env var <code>DOCUMENT_ROOT</code>, and dynamically loads the file or runs it as a subordinate shell process. This felt like a rabbit hole to me though. If a pattern emerges after creating more sites, I&rsquo;ll likely refactor that.</p>
+<h3><a href="#a-pod-does-not-have-a-static-binary" id="a-pod-does-not-have-a-static-binary"></a>A Pod does not have a static binary</h3>
+<p>The short answer is to build the static binary yourself on your local machine. The long answer is you can use the Dockerfile and scripts in <a href="https://github.com/eccentric-j/clj-cgi-example">https://github.com/eccentric-j/clj-cgi-example</a> to build the static binary.</p>
+<p>Also please consider making a pull-request (PR) to create a static binary automatically on each release. For an example of how to do that check out my PR for the babashka-sql-pods <a href="https://github.com/babashka/babashka-sql-pods/pull/21">https://github.com/babashka/babashka-sql-pods/pull/21</a> for an example. Just remember to update the generate_circleci.clj file and not the .circle/config.yml file like I did. &#x1f605;</p>
+<h3><a href="#is-there-a-faster-way-to-create-a-separate-jar-for-each-file-i-need" id="is-there-a-faster-way-to-create-a-separate-jar-for-each-file-i-need"></a>Is there a faster way to create a separate JAR for each file I need?</h3>
+<p>In my github repo for the example project, there is a script for bundling a library as a jar and moving it into the current directory. Run it on your local machine and make sure you installed Babashka on your local as well.</p>
+<ol>
+<li>Clone my example repo from <a href="https://github.com/eccentric-j/clj-cgi-example">https://github.com/eccentric-j/clj-cgi-example</a></li>
+<li>Enter into the directory <code>cd clj-cgi-example</code></li>
+<li>Create a deps.edn file with your libraries</li>
+<li>Run the depjar script <code>./depjar/depjar.clj ./deps.edn</code></li>
+<li>Upload the newly created jar files to your server and you are good to go &#x1f680;</li>
+</ol>
+<h3><a href="#how-do-i-create-config-files-that-i-can-load-in-my-clojure-scripts-but-not-expose-to-the-web" id="how-do-i-create-config-files-that-i-can-load-in-my-clojure-scripts-but-not-expose-to-the-web"></a>How do I create config files that I can load in my Clojure scripts but not expose to the web?</h3>
+<p>There are many ways to solve this problem. For now I went with having a <code>prod.secret.edn</code> with my db credentials in a simple hash-map. Make sure to set the permissions to <code>600</code> so it&rsquo;s only readable and writable by the user. If an attacker attempts to visit this file it will return a 403 Forbidden error. Please keep in mind I&rsquo;m by no means a security expert so you should do your own testing to pick the right solution for you.</p>
+<h3><a href="#can-i-use-the-apache-mod-rewrite-to-create-friendly-urls" id="can-i-use-the-apache-mod-rewrite-to-create-friendly-urls"></a>Can I use the Apache mod_rewrite to create friendly URLS?</h3>
+<p>Yes! Create a <code>.htaccess</code> similar to the following:</p>
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteBase &quot;/&quot;
+RewriteCond &quot;%{REQUEST_URI}&quot; &quot;!^/img&quot;
+RewriteRule &quot;.*&quot; &quot;metal.clj&quot; [L,PT]
+&lt;/IfModule&gt;
+AddHandler cgi-script .clj
+</code></pre>
+<p>And any requests to anything other than images will rewrite to the metal.clj script. For instance visiting <code>https://cgi.eccentric-j.com</code> gets rerouted to <code>metal.clj</code>.</p>
+<h3><a href="#when-should-i-use-a-pod-vs-uberjar-" id="when-should-i-use-a-pod-vs-uberjar-"></a>When should I use a pod vs. uberjar ?</h3>
+<p>Uberjar is best when dealing with Babashka friendly Clojure libraries. Pods are CLIs that act as a service exchanging methods with Babashka which support different languages provided the API offers a certain format.</p>
+<h3><a href="#where-can-i-learn-more-about-babashka" id="where-can-i-learn-more-about-babashka"></a>Where can I learn more about Babashka?</h3>
+<p>Check out <a href="https://book.babashka.org">https://book.babashka.org</a> for documentation around Babashka such as arguments and available APIs.</p>
+<h2><a href="#alternatives" id="alternatives"></a>Alternatives</h2>
+<p>One alternative I considered but have not explored is using Graal VM to compile a static binary that contains the entire web app and supporting libraries. The downside of this approach is that if any file changes, you will need to rebuild the binary and upload it to the server. Then you can access it directly via cgi-bin.</p>
+<p>Github user alekcz (<a href="https://alexanderoloo.com/">Alexander Oloo</a>) has begun drafting <a href="https://github.com/alekcz/pcp">PCP</a>: A Clojure processor that runs a SCGI server that can act as a replacement for a long-running php-fpm process. This may not be best suited for a shared hosting service but would definitely be good for a VPS hosting service. I look forward to seeing it progress!</p>
+<p>Another possible option is Phel lang <a href="https://github.com/phel-lang/phel-lang">https://github.com/phel-lang/phel-lang</a>. It&rsquo;s a lisp-family language that compiles to PHP directly inspired by Clojure and <a href="https://janet-lang.org/">Janet</a>. The downside is that Clojure comes with a mature body of help content, tutorials, libraries, and community for support where as Phel has only just sprouted.</p>
+</section></article></li><li class="posts__item"><article class="post "><header class="post__header"><a class="post__permalink not-mobile" href="/blog/biggest-obstacles.html"><i class="fa fa-link"></i></a><div class="borders post__headline"><h1 class="post__title"><a class="post__link" href="/blog/biggest-obstacles.html">Our biggest obstacles are in our own minds</a></h1></div><div class="post__attrs"><time class="post__meta post__date-time" datetime="Mon Jun 29 02:29:00 UTC 2020"><span class="post__date icon fa-calendar-day">June 29, 2020</span><span class="post__time icon fa-clock">02:29 AM</span></time><span class="post__meta"><span class="post__ttr icon fa-stopwatch">5 min. read</span></span></div></header><section class="post__content post__summary">What is the biggest obstacle that hinders us as software engineers? It may be exactly what we imagine.</section></article></li><li class="posts__item"><article class="post "><header class="post__header"><a class="post__permalink not-mobile" href="/blog/contributing-to-open-source.html"><i class="fa fa-link"></i></a><div class="borders post__headline"><h1 class="post__title"><a class="post__link" href="/blog/contributing-to-open-source.html">My gentle introduction to hard-core open-source contribution</a></h1></div><div class="post__attrs"><time class="post__meta post__date-time" datetime="Mon Jun 24 02:16:42 UTC 2019"><span class="post__date icon fa-calendar-day">June 24, 2019</span><span class="post__time icon fa-clock">02:16 AM</span></time><span class="post__meta"><span class="post__ttr icon fa-stopwatch">7 min. read</span></span></div></header><section class="post__content post__summary">I had made my first major open-source contribution to a popular Clojure library. Learn from my experience and start contributing!</section></article></li></ul><div class="pagination"><a class="pagination__link" href="/blog/page-1.html">View Older Posts<i class="fa fa-long-arrow-alt-right ml-1"></i></a></div></div></div></div><aside class="sidebar"><div class="sidebar__inner"><section class="profile text-center "><h1 class="profile__title"><a href="/"><img alt="Eccentric J&apos;s Logo" class="profile__logo" src="/img/eccentric-j-logo.svg"><span class="color-bone">eccentric</span> J</a></h1><ul class="profile__trades"><li class="profile__trade">Engineer</li><li class="profile__trade">Designer</li><li class="profile__trade">Artist</li></ul><blockquote class="profile__quote">Idle parentheses form the devil's playlists.</blockquote></section><section class="navbar"><nav class="navbar__nav"><div class="not-mobile"><i class="drip bg-teal" style="right:0.3125rem;top:0.0rem;max-height:1.875rem;width:0.3125rem;height:0.3125rem;"></i><i class="drip bg-teal" style="right:0.75rem;top:0.0rem;max-height:3.0rem;width:0.1875rem;height:0.5rem;"></i><i class="drip bg-teal" style="right:1.25rem;top:0.0rem;max-height:3.75rem;width:0.5rem;height:0.25rem;"></i></div><ul class="navbar__list"><li class="navbar__item navbar__active"><a href="/">idle-parens<span class="navbar__label">(blog)</span></a></li><li class="navbar__item "><a href="/projects.html">active-parens<span class="navbar__label">(projects)</span></a></li><li class="navbar__item "><a href="/about.html">meta<span class="navbar__label">(about)</span></a></li></ul></nav></section><ul class="media-links d-flex flex-row justify-content-between"><li class="media-links__item"><a class="icon fa-rss " href="/feed.rss"><span class="media-links__label">RSS</span></a></li><li class="media-links__item"><a class="icon fa-rss-square " href="/atom.xml"><span class="media-links__label">Atom</span></a></li><li class="media-links__item"><a class="brand fa-github-square" href="https://github.com/eccentric-j"><span class="media-links__label">Github</span></a></li><li class="media-links__item"><a class="icon fa-envelope" href="mailto:jayzawrotny@gmail.com"><span class="media-links__label">Email</span></a></li></ul></div></aside></div></div><script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script><script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/clojure.min.js"></script><script src="/js/eccentric-app.js"></script><script>hljs.initHighlightingOnLoad();</script></body></html>
